@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<!-- CONSTANTIA 1.12.2 AUTH FINAL v41 | visual theme only -->
+<html lang="pt-BR">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" data-constantia-supabase-loader></script>
+<script>
+// CONSTANTIA AUTH BOOTSTRAP: the CDN script above is blocking, so Supabase is
+// initialized here before any application code can run. No readiness Promise.
+(function(){
+  var url="https://sseysfdqittgzoczlgog.supabase.co";
+  var key="sb_publishable_mhN8HL9ck9LR5bhCURX7Rg_607Smq8I";
+  try{
+    if(window.supabase && typeof window.supabase.createClient==='function'){
+      if(!window.constantiaSupabaseClient || !window.constantiaSupabaseClient.auth){
+        window.constantiaSupabaseClient=window.supabase.createClient(url,key);
+      }
+      window.CONSTANTIA_SUPABASE_READY=!!(window.constantiaSupabaseClient && window.constantiaSupabaseClient.auth);
+    }else{
+      window.CONSTANTIA_SUPABASE_READY=false;
+      window.CONSTANTIA_SUPABASE_ERROR='A biblioteca de login do Supabase não foi carregada.';
+    }
+  }catch(error){
+    window.CONSTANTIA_SUPABASE_READY=false;
+    window.CONSTANTIA_SUPABASE_ERROR=String(error && error.message || error);
+    console.error('CONSTANTIA Supabase bootstrap:',error);
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#76528b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="mobile-web-app-title" content="CONSTANTIA">
+<meta name="application-name" content="CONSTANTIA">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="manifest" href="./manifest.json">
+<title>CONSTANTIA</title>
+<script>window.CONSTANTIA_VERSION='1.12.2-v42';</script>
+<style id="constantia-base">
+:root{--bg:#fbf6fb;--card:#fffafd;--ink:#332d35;--muted:#827783;--purple:#76528b;--line:#e8dfe8}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(#fcf7fc,#fff);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink)}
+.app{max-width:1100px;margin:auto;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.brand{display:flex;align-items:center;gap:9px}.brand-title{position:relative}.brand h1{font-size:21px;margin:0;color:#694b7c;cursor:pointer;user-select:none}.brand h1::after{content:''}.title-caret{font-size:15px;margin-left:7px;display:inline-block;transition:transform .18s}.brand-title.open .title-caret{transform:rotate(180deg)}.brand-title.open h1::after{transform:rotate(180deg)}.brand small{color:var(--muted)}.title-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:245px;background:#fffafd;border:1px solid var(--line);border-radius:15px;padding:7px;box-shadow:0 12px 30px rgba(60,40,70,.16);display:none;z-index:20}.brand-title.open .title-menu{display:block}.title-option{width:100%;display:flex;align-items:center;gap:10px;text-align:left;border:0;background:transparent;border-radius:11px;padding:11px 12px;color:#514957;font-weight:800}.title-option:hover{background:#f7edf8}.title-option.active{background:#eadcf0;color:#674a78}.title-option .title-icon{width:26px;text-align:center;font-size:18px}.title-option small{margin-left:auto;color:var(--muted);font-weight:600;font-size:10px}
+button{border:1px solid #d2c5d4;background:#fffaff;color:#514957;border-radius:13px;padding:11px 15px;font-weight:750;font-size:14px;cursor:pointer}
+button:hover{filter:brightness(.98)}.primary{background:var(--purple);color:#fff;border-color:var(--purple)}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.month-arrow{width:38px;height:38px;padding:0;border-radius:12px;font-size:24px;line-height:1;display:inline-flex;align-items:center;justify-content:center}.toolbar .year{font-weight:800;font-size:19px;color:#674a78;margin-right:4px}
+.view-toggle{margin-left:auto;display:flex}.view-toggle button{border-radius:10px;margin-left:4px}.view-toggle .active{background:#eadcf0;border-color:#c9b4d1;color:#674a78}
+.legend{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12px}.legend span{display:flex;align-items:center;gap:5px}
+.legend i{width:11px;height:11px;border-radius:50%;display:inline-block;border:3px solid}
+.year-shell{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:13px;box-shadow:0 5px 18px rgba(80,55,90,.06)}
+.year-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.month-card{background:#fffafd;border:1px solid var(--line);border-radius:14px;padding:9px;cursor:pointer;min-width:0;aspect-ratio:1.18/1;display:flex;flex-direction:column;justify-content:flex-start}
+.month-card.current{box-shadow:0 0 0 2px #76528b inset}.single-month-card{max-width:760px;margin:0 auto;aspect-ratio:auto}
+.month-name{text-align:center;font-weight:850;color:#684a78;text-transform:capitalize;margin-bottom:7px}
+.mini-week,.mini-grid{display:grid;grid-template-columns:repeat(7,1fr)}.mini-week div{text-align:center;font-size:9px;color:#958895;font-weight:800;padding-bottom:4px}
+.mini-day{height:42px;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;overflow:hidden}
+.mini-num{width:29px;height:29px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;border:3px solid transparent;z-index:1}
+.mini-day.combined .mini-num{transform:translateY(-5px)}
+.mini-day.combined .emoji{position:absolute;bottom:0;font-size:10px;line-height:1}
+.mini-day.event .emoji{pointer-events:none}
+.mini-day.combined .mini-num{background:var(--event-bg,#fffafd)}
+.mini-day.emoji-mode .mini-num{border-color:transparent!important;background:transparent;color:transparent;font-size:0}
+.mini-day.emoji-mode .emoji{position:absolute;font-size:15px}
+
+.mini-day.out{opacity:.22}.mini-day.selected{background:#faf0fb;border-radius:8px}.mini-day.today .mini-num{box-shadow:0 0 0 2px #76528b}
+.mini-day.event .mini-num{border-color:var(--event-color)}.mini-day.filled .mini-num{background:var(--event-color);color:white}
+.mini-day .emoji{position:absolute;font-size:13px;line-height:1;pointer-events:none}
+ 
+.panel{margin-top:14px;background:#fff8fc;border:1px solid var(--line);border-radius:18px;padding:16px}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.panel-head h2{margin:0;font-size:18px}.panel-head small{color:var(--muted)}
+.event{margin-top:10px;background:white;border:1px solid var(--line);border-radius:14px;padding:13px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.event-left{display:flex;align-items:center;gap:11px}.event-color{width:12px;height:12px;border-radius:50%;flex:none}.event strong{display:block}.event small{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:12px}.stat{background:white;border:1px solid var(--line);border-radius:13px;text-align:center;padding:11px}.stat b{display:block;font-size:21px;color:#674a78}.stat span{font-size:10px;color:var(--muted)}
+.modal-back{position:fixed;inset:0;background:rgba(42,31,45,.35);display:none;align-items:center;justify-content:center;padding:15px;z-index:10}.modal{width:min(500px,100%);max-height:92vh;overflow:auto;background:#fffafd;border-radius:20px;padding:19px;box-shadow:0 20px 60px rgba(30,20,35,.25)}
+.modal h3{margin:0 0 4px}.modal p{margin:0 0 14px;color:var(--muted);font-size:13px}.form{display:grid;gap:9px}.form label{font-size:12px;font-weight:800;color:#665d68}.form input,.form select{width:100%;padding:11px;border:1px solid #d8cbd8;border-radius:11px;background:#fff;font-size:15px}
+.color-row{display:flex;gap:7px;flex-wrap:wrap}.color{width:36px;height:36px;border-radius:50%;border:3px solid white;box-shadow:0 0 0 1px #d5c8d6;cursor:pointer}.color.active{box-shadow:0 0 0 3px #76528b}
+.actions-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}.actions-row button{flex:1}.danger{color:#b64040}.tag-list{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.tag{border:1px solid var(--line);background:#fff;border-radius:12px;padding:7px 9px;display:flex;align-items:center;gap:7px}.tag .emoji{font-size:18px}.tag button{padding:3px 7px;border:0;background:#f7edf7;font-size:11px}
+.notice{background:#f7edf8;border:1px solid #e1d0e6;border-radius:12px;padding:10px;font-size:12px;color:#675b68;margin-bottom:12px}
+
+.menu-bar{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.menu-btn{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 13px;font-weight:800;color:#60486e}
+.menu-btn.active{background:#eadcf0}
+.profile-banner{height:105px;border-radius:15px;background:linear-gradient(135deg,#eadcf0,#fff8fc);background-size:cover;background-position:center;position:relative;margin-bottom:45px}
+.profile-avatar{width:82px;height:82px;border-radius:50%;background:#fff;border:4px solid #fff;box-shadow:0 2px 10px rgba(70,50,75,.15);position:absolute;left:18px;bottom:-41px;object-fit:cover}
+.profile-name{position:absolute;left:112px;bottom:-32px;font-weight:850;color:#5e4868}
+.about-box,.profile-box,.share-box,.install-box{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;margin-top:10px}
+.about-box h3,.profile-box h3,.share-box h3,.install-box h3{margin:0 0 7px;color:#674a78}
+.muted{color:var(--muted);font-size:12px;line-height:1.5}
+.share-checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}
+.check{display:flex;gap:8px;align-items:center;border:1px solid var(--line);padding:10px;border-radius:11px;font-size:13px}
+.check input{width:18px;height:18px}
+.preview-banner{height:75px;border-radius:12px;background:#f7edf8;background-size:cover;background-position:center;margin-top:7px}
+.preview-avatar{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-top:7px}
+.menu-section{display:none}
+.menu-section.open{display:block}
+.notification-box{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;margin-top:10px}.notification-status{padding:10px;border-radius:11px;background:#f7edf8;border:1px solid #e1d0e6;font-size:12px;color:#675b68;margin:10px 0}.notification-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.notification-grid label{font-size:12px;font-weight:800;color:#665d68}.notification-grid select{width:100%;padding:11px;border:1px solid #d8cbd8;border-radius:11px;background:#fff;margin-top:5px}@media(max-width:570px){.notification-grid{grid-template-columns:1fr}}
+
+@media(max-width:850px){.year-grid{grid-template-columns:repeat(2,1fr)}.month-card{aspect-ratio:1.12/1}}
+@media(max-width:570px){.app{padding:10px}.year-grid{grid-template-columns:repeat(2,1fr);gap:7px}.month-card{padding:6px;aspect-ratio:1.02/1}.stats{grid-template-columns:repeat(2,1fr)}.view-toggle{margin-left:0;width:100%}.view-toggle button{flex:1}.mini-day{height:37px}.mini-num{width:25px;height:25px}.month-name{font-size:12px}.mini-week div{font-size:8px}}
+.month-arrows{display:flex;justify-content:space-between;gap:10px;margin:10px auto 0;max-width:760px}
+.month-arrows button{flex:1}
+.swipe-hint{text-align:center;color:var(--muted);font-size:11px;margin:8px 0 0}
+.swipe-active{opacity:.92}
+
+/* v9 visual stabilization */
+*{box-sizing:border-box}
+body{overflow-x:hidden}
+.app{width:min(100%,1180px);margin:0 auto;padding:14px}
+.topbar{position:sticky;top:0;z-index:20}
+.year-shell{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:10px;overflow:visible}
+.month-card{width:100%;min-width:0;height:auto;aspect-ratio:auto;padding:9px;border-radius:14px}
+.month-card .mini-grid{width:100%;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.mini-day{min-width:0;width:100%;height:28px;display:flex;align-items:center;justify-content:center;position:relative}
+.mini-day .mini-num{font-size:10px;line-height:1}
+.mini-day .circle{width:18px;height:18px}
+.mini-day .emoji{max-width:100%;overflow:hidden}
+.toolbar{min-width:0}
+@media(max-width:900px){.year-shell{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.month-card{padding:8px}.mini-day{height:27px}}
+@media(max-width:520px){.app{padding:8px}.year-shell{grid-template-columns:1fr;gap:8px}.month-card{padding:10px}.mini-day{height:31px}.mini-day .circle{width:20px;height:20px}.mini-day .mini-num{font-size:11px}}
+button,input,select{font:inherit}
+button{touch-action:manipulation}
+
+/* CONSTANTIA 1.12.2 annual calendar layout */
+.year-shell{display:block!important;width:100%!important;padding:10px!important;overflow:visible!important}
+.year-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:start!important;align-content:start!important;gap:12px!important;width:100%!important}
+.month-card{display:block!important;position:relative!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:auto!important;overflow:hidden!important;padding:9px!important}
+.month-card *{max-width:100%}
+.mini-grid{display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;width:100%!important;gap:3px!important}
+@media(max-width:900px){.year-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.month-card{padding:8px!important}.mini-day{height:27px!important}}
+@media(max-width:520px){.year-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.month-card{padding:7px!important}.mini-day{height:29px!important}.mini-day .circle{width:20px!important;height:20px!important}.mini-day .mini-num{font-size:10px!important}.month-name{font-size:11px!important}.mini-week div{font-size:8px!important}}
+
+.auth-gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(145deg,#fbf6fb,#fff);display:flex;align-items:center;justify-content:center;padding:20px}.auth-card{width:min(430px,100%);background:#fffafd;border:1px solid #e8dfe8;border-radius:26px;padding:28px;box-shadow:0 20px 70px rgba(60,40,70,.16)}.auth-brand{text-align:center;margin-bottom:22px}.auth-brand .mark{font-size:42px}.auth-brand h2{margin:8px 0 3px;color:#694b7c;font-size:28px}.auth-brand p{margin:0;color:#827783;font-size:13px}.auth-links{display:flex;justify-content:space-between;gap:8px;margin-top:10px}.auth-links button{border:0;background:transparent;color:#76528b;padding:7px 0;font-weight:800}.auth-status{min-height:20px;margin-top:10px;color:#827783;font-size:12px;text-align:center}.auth-userbar{display:flex;align-items:center;gap:8px;margin-left:auto}.auth-userbar button{padding:8px 11px;font-size:12px}
+
+/* CONSTANTIA 1.7 Android touch fixes */
+html,body{min-height:100%;-webkit-text-size-adjust:100%;overscroll-behavior-y:contain}
+body{-webkit-tap-highlight-color:transparent}
+button,.menu-btn,.mini-day,.month-card{touch-action:manipulation;-webkit-user-select:none;user-select:none}
+input,select,textarea{font-size:16px!important}
+.auth-gate{pointer-events:auto!important}
+.auth-card button{pointer-events:auto!important;position:relative;z-index:2}
+@media(max-width:520px){
+ .auth-card{padding:22px 18px}
+ .auth-card button{min-height:48px}
+ .menu-btn{min-height:44px}
+}
+
+/* CONSTANTIA public share: visualização somente leitura */
+body.constantia-public-share #newBtn,
+body.constantia-public-share #prevYear,
+body.constantia-public-share #nextYear,
+body.constantia-public-share #logoutButton,
+body.constantia-public-share #authButton,
+body.constantia-public-share [data-menu="share"],
+body.constantia-public-share [data-menu="install"],
+body.constantia-public-share [data-menu="about"],
+body.constantia-public-share [data-menu="profile"],body.constantia-public-share #moreBtn{display:none!important}
+body.constantia-public-share [data-edit],
+body.constantia-public-share [data-delete]{display:none!important}
+body.constantia-public-share .public-share-note{display:block}
+.public-share-note{display:none;margin:0 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fffafd;color:var(--muted);font-size:12px}
+/* CONSTANTIA 1.12.2 v9 */
+.app{padding-bottom:92px}
+.bottom-nav{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:20;width:min(430px,calc(100% - 24px));height:66px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:7px;background:rgba(255,250,253,.96);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(50,35,55,.16);backdrop-filter:blur(12px)}
+.bottom-nav button{border:0;background:transparent;border-radius:15px;color:#60486e;font-weight:850;font-size:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.bottom-nav button span{font-size:11px}
+.bottom-nav .bottom-new{background:var(--purple);color:#fff;font-size:25px}
+.bottom-nav .bottom-new span{font-size:12px}
+.menu-bar{display:none!important}
+.year-shell{padding:8px!important}
+.year-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+.month-card{min-height:285px!important;padding:10px!important}
+.mini-day{height:39px!important}
+@media(max-width:520px){
+  .app{padding-bottom:90px}
+  .year-shell{padding:5px!important}
+  .year-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+  .month-card{min-height:246px!important;padding:6px!important;border-radius:16px!important}
+  .mini-day{height:31px!important}
+  .mini-num{width:24px!important;height:24px!important;font-size:9px!important}
+  .mini-week div{font-size:7px!important}
+  .month-name{font-size:10px!important}
+}
+
+/* CONSTANTIA v14: círculos anuais compactos e redondos */
+.home-calendar{width:38px;height:38px;display:grid;place-items:center;border:0;background:transparent;border-radius:50%;font-size:25px;cursor:pointer;padding:0;flex:none}
+.home-calendar:active{transform:scale(.96)}
+.year-grid .mini-day .mini-num{
+  width:23px!important;
+  height:23px!important;
+  min-width:23px!important;
+  min-height:23px!important;
+  border-radius:50%!important;
+  border-width:2px!important;
+  padding:0!important;
+  box-sizing:border-box!important;
+  line-height:1!important;
+}
+.year-grid .mini-day.combined .mini-num{transform:translateY(-3px)!important}
+.year-grid .mini-day.combined .emoji{bottom:1px!important;font-size:8px!important}
+.year-grid .mini-day.emoji-mode .emoji{font-size:13px!important}
+@media(max-width:520px){
+  .home-calendar{width:34px;height:34px;font-size:23px}
+  .year-grid .mini-day .mini-num{
+    width:20px!important;
+    height:20px!important;
+    min-width:20px!important;
+    min-height:20px!important;
+    border-width:2px!important;
+  }
+  .year-grid .mini-day.combined .mini-num{transform:translateY(-2px)!important}
+  .year-grid .mini-day.combined .emoji{font-size:7px!important}
+  .year-grid .mini-day.emoji-mode .emoji{font-size:11px!important}
+}
+/* Barra inferior minimalista: três botões com a mesma forma e área útil */
+.bottom-nav{height:62px!important;padding:6px!important;gap:6px!important;border-radius:18px!important}
+.bottom-nav button{height:50px!important;min-width:0!important;border-radius:14px!important;font-size:19px!important;gap:1px!important}
+.bottom-nav button span{font-size:10px!important;font-weight:800!important}
+.bottom-nav .bottom-new{font-size:22px!important;border-radius:14px!important}
+.bottom-nav .bottom-new span{font-size:10px!important}
+
+/* CONSTANTIA v15: cabeçalho centralizado e início de página consistente */
+header{position:relative;min-height:58px!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;gap:8px!important}
+header .brand{grid-column:2!important;justify-self:center!important;display:flex!important;align-items:center!important;gap:7px!important;text-align:center!important}
+header .brand-title{display:flex!important;flex-direction:column!important;align-items:center!important}
+header .brand-title h1{margin:0!important;text-align:center!important}
+header .brand-title small{text-align:center!important}
+header>div:last-child{grid-column:3!important;justify-self:end!important}
+.home-calendar{position:absolute!important;left:8px!important;top:50%!important;transform:translateY(-50%)!important;width:40px!important;height:40px!important}
+.home-calendar:active{transform:translateY(-50%) scale(.96)!important}
+/* O título mostra apenas os dois modos oficiais. */
+.title-menu{min-width:150px!important}
+.title-option[data-section="shifts"] span:not(.title-icon),
+.title-option[data-section="routine"] span:not(.title-icon){font-weight:850!important}
+/* CONSTANTIA v16 */
+.main-header{display:block!important;position:relative!important;padding:9px 10px 8px!important}
+.header-top{display:grid!important;grid-template-columns:1fr 1fr!important;align-items:center!important;min-height:50px!important}
+.home-link{justify-self:start!important;border:1px solid var(--line)!important;background:#fffafd!important;color:#60486e!important;border-radius:13px!important;padding:8px 12px!important;font-weight:850!important;font-size:13px!important}
+.brand-title{justify-self:end!important;text-align:right!important}
+.brand-title h1{margin:0!important;color:#684a78!important;font-size:28px!important;letter-spacing:-.6px!important}
+.header-controls{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:10px!important;margin-top:7px!important}
+.mode-controls{display:flex!important;align-items:center!important;gap:5px!important;flex-wrap:wrap!important}
+.mode-label{font-weight:850!important;color:#60486e!important}
+.mode-option{border:1px solid var(--line)!important;background:#fffafd!important;color:#60486e!important;border-radius:11px!important;padding:7px 9px!important;font-weight:800!important;font-size:11px!important}
+.mode-option.active{background:#eadcf0!important;border-color:#d7c1df!important;color:#674a78!important}
+.year-controls{display:flex!important;align-items:center!important;gap:5px!important;flex:none!important}
+.year-controls button{min-width:62px!important;padding:8px 9px!important}
+#headerYear{min-width:42px!important;text-align:center!important;color:#60486e!important;font-size:16px!important;font-weight:900!important}
+.title-menu{display:none!important}
+@media(max-width:650px){
+ .main-header{padding:7px 6px!important}
+ .brand-title h1{font-size:24px!important}
+ .home-link{padding:7px 9px!important;font-size:12px!important}
+ .header-controls{align-items:flex-start!important}
+ .mode-controls{max-width:58%!important}
+ .mode-label{width:100%!important;font-size:11px!important}
+ .mode-option{padding:6px 7px!important;font-size:10px!important}
+ .year-controls{margin-top:17px!important}
+ .year-controls button{min-width:52px!important;padding:7px 5px!important}
+ #headerYear{font-size:14px!important;min-width:38px!important}
+}
+/* CONSTANTIA v18 */
+.header-top{grid-template-columns:auto 1fr!important}
+.home-link{min-width:86px!important;height:38px!important;padding:7px 10px!important;border-radius:12px!important}
+.brand-title{justify-self:end!important;align-self:center!important;text-align:right!important;padding-right:4px!important}
+.brand-title h1{font-size:27px!important}
+.mode-controls{gap:5px!important}
+.mode-option{height:34px!important;min-width:92px!important;padding:6px 9px!important;border-radius:11px!important}
+.mode-option#modeTags{min-width:108px!important}
+.year-controls button{height:36px!important;min-width:62px!important;border-radius:11px!important;padding:6px 9px!important}
+#headerYear{height:36px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+@media(max-width:650px){
+ .header-top{grid-template-columns:auto 1fr!important}
+ .home-link{min-width:78px!important;height:36px!important;font-size:11px!important}
+ .brand-title h1{font-size:24px!important}
+ .mode-controls{max-width:none!important;width:auto!important}
+ .mode-option{min-width:78px!important;height:32px!important;padding:5px 7px!important;font-size:10px!important}
+ .mode-option#modeTags{min-width:98px!important}
+ .year-controls{margin-top:0!important}
+ .year-controls button{height:34px!important;min-width:51px!important;padding:5px 6px!important;font-size:12px!important}
+ #headerYear{height:34px!important;font-size:14px!important;min-width:38px!important}
+}
+#authGate{z-index:100!important}
+#authGate .modal{position:relative!important;z-index:101!important}
+/* CONSTANTIA v20: menu ⋮ restaurado */
+.more-button{
+  width:38px!important;height:36px!important;min-width:38px!important;
+  padding:0!important;border-radius:11px!important;font-size:22px!important;
+  line-height:1!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+}
+#menuMore .actions-row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+#menuMore .actions-row button{min-height:46px!important;border-radius:13px!important}
+#menuMore #moreLogout{color:#a33b48!important;border-color:#e5c5ca!important}
+@media(max-width:650px){
+ .more-button{width:34px!important;height:34px!important;min-width:34px!important;font-size:20px!important}
+ #menuMore .actions-row{grid-template-columns:1fr 1fr!important}
+}
+/* CONSTANTIA v21: cabeçalho em três linhas */
+.v21-header{display:block!important;padding:10px 12px 8px!important}
+.v21-top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important}
+.v21-top .brand-title{padding:0!important;text-align:left!important;justify-self:auto!important}
+.v21-top .brand-title h1{margin:0!important;text-align:left!important;font-size:27px!important}
+.v21-top .home-link{position:static!important;transform:none!important;margin:0!important;flex:none!important}
+.v21-top .home-link:active{transform:scale(.97)!important}
+
+.v21-actions{
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  gap:6px!important;
+  margin-top:9px!important;
+  width:100%!important;
+}
+.v21-actions button{
+  width:100%!important;
+  min-width:0!important;
+  height:38px!important;
+  padding:5px 4px!important;
+  border-radius:11px!important;
+  font-size:11px!important;
+  white-space:nowrap!important;
+}
+.v21-actions .more-button{font-size:21px!important}
+
+.v21-years{
+  display:grid!important;
+  grid-template-columns:1fr auto 1fr!important;
+  align-items:center!important;
+  gap:8px!important;
+  width:100%!important;
+  margin:9px 0 0!important;
+}
+.v21-years button{width:100%!important;height:38px!important}
+.v21-years #headerYear{min-width:62px!important;font-size:17px!important}
+
+#yearTitle,#todayBtn{display:none!important}
+
+@media(max-width:650px){
+ .v21-header{padding:8px 7px 7px!important}
+ .v21-top .brand-title h1{font-size:24px!important}
+ .v21-top .home-link{height:34px!important;min-width:72px!important;padding:5px 8px!important}
+ .v21-actions{gap:4px!important}
+ .v21-actions button{height:34px!important;padding:4px 2px!important;font-size:9px!important;letter-spacing:-.15px!important}
+ .v21-actions .more-button{font-size:19px!important}
+ .v21-years{margin-top:7px!important;gap:6px!important}
+ .v21-years button{height:34px!important}
+ .v21-years #headerYear{height:34px!important;min-width:50px!important;font-size:15px!important}
+}
+/* CONSTANTIA v23: autenticação independente da inicialização do restante da UI */
+#authGate{position:fixed!important;inset:0!important;z-index:10000!important;pointer-events:auto!important}
+#authGate .auth-card{position:relative!important;z-index:10001!important;pointer-events:auto!important}
+#authGate button,#authGate input{pointer-events:auto!important;position:relative!important;z-index:10002!important}
+</style>
+
+<style id="constantia-layout-v34">
+/* CONSTANTIA v34: ajuste de layout, sem alterar a lógica/auth */
+.v21-header{margin-bottom:10px!important}
+.v21-top{min-height:40px!important}
+.v21-top .brand-title h1{font-weight:900!important;letter-spacing:-.45px!important}
+.v21-actions{grid-template-columns:1fr 1fr 1.18fr 1.15fr .55fr!important;gap:4px!important}
+.v21-actions button{min-width:0!important;overflow:hidden!important;text-overflow:clip!important;white-space:nowrap!important;font-size:10px!important;line-height:1!important;padding:4px 2px!important}
+.v21-actions #modeTags,.v21-actions #headerNotifications{font-size:9.5px!important}
+.v21-actions .more-button{font-size:20px!important;padding:0!important}
+.v21-years{margin-top:8px!important}
+#calendarContent > .toolbar{display:none!important}
+#calendarContent{margin-top:2px!important}
+#calendarContent > .legend{margin-top:6px!important;margin-bottom:7px!important;padding:0 3px!important;justify-content:center!important}
+#calendarArea{margin-top:0!important}
+.swipe-hint{display:none!important}
+@media(max-width:520px){
+ .v21-header{padding:7px 5px 6px!important}
+ .v21-top .brand-title h1{font-size:24px!important}
+ .v21-top .home-link{height:34px!important;min-width:72px!important;padding:5px 8px!important}
+ .v21-actions{grid-template-columns:1fr 1fr 1.18fr 1.15fr .55fr!important;gap:4px!important;margin-top:8px!important}
+ .v21-actions button{height:35px!important;font-size:9.5px!important;padding:3px 1px!important;border-radius:11px!important}
+ .v21-actions #modeTags,.v21-actions #headerNotifications{font-size:9px!important}
+ .v21-actions .more-button{font-size:20px!important}
+ .v21-years{margin-top:7px!important;gap:6px!important}
+ .v21-years button{height:36px!important;font-size:13px!important}
+ .v21-years #headerYear{height:36px!important;min-width:48px!important;font-size:16px!important}
+ #calendarContent > .legend{font-size:11px!important;gap:8px!important;justify-content:flex-start!important;overflow:hidden!important;flex-wrap:nowrap!important;white-space:nowrap!important}
+ #calendarContent > .legend span{flex:0 0 auto!important}
+}
+
+.header-view-toggle{display:flex;justify-content:center;gap:6px;margin:7px 0 2px}
+.header-view-toggle button{min-width:72px;height:36px;padding:6px 12px;border-radius:12px;border:1px solid #dfd0e4;background:#fffafd;color:#6f6472;font-weight:800;font-size:13px}
+.header-view-toggle button.active{background:#eadcf0;border-color:#c9b4d1;color:#674a78}
+#calendarContent > .legend{margin-top:12px!important}
+@media(max-width:520px){
+  .header-view-toggle{margin:6px 0 2px}
+  .header-view-toggle button{min-width:78px;height:35px;font-size:12px}
+}
+</style>
+
+
+<style id="constantia-layout-v37">
+/* CONSTANTIA v37: cabeçalho em duas linhas proporcionais no celular */
+.v21-actions{
+  display:grid!important;
+  grid-template-columns:repeat(6,minmax(0,1fr))!important;
+  gap:7px!important;
+  align-items:stretch!important;
+  width:100%!important;
+  margin-top:9px!important;
+}
+.v21-actions #modeShifts,
+.v21-actions #modeRoutine{grid-column:span 3!important}
+.v21-actions #modeTags,
+.v21-actions #headerNotifications,
+.v21-actions #moreBtn{grid-column:span 2!important}
+.v21-actions button{
+  width:100%!important;
+  min-width:0!important;
+  height:40px!important;
+  min-height:40px!important;
+  padding:7px 8px!important;
+  border-radius:12px!important;
+  font-size:11.5px!important;
+  line-height:1.1!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+.v21-actions #moreBtn{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:23px!important;
+  font-weight:900!important;
+  padding:0!important;
+}
+@media(max-width:520px){
+  .v21-actions{gap:6px!important;margin-top:8px!important}
+  .v21-actions button{
+    height:40px!important;
+    min-height:40px!important;
+    padding:6px 5px!important;
+    font-size:10.5px!important;
+    border-radius:11px!important;
+  }
+  .v21-actions #modeTags,
+  .v21-actions #headerNotifications{font-size:10px!important}
+  .v21-actions #moreBtn{font-size:22px!important}
+}
+</style>
+
+<style id="constantia-v41-visual-theme">
+/* CONSTANTIA v41 | Visual theme only
+   No layout, behavior, data, authentication or application logic changes. */
+
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#f1ede4 !important;
+  --card:#faf8f2 !important;
+  --ink:#202020 !important;
+  --muted:#7f7e7a !important;
+  --purple:#47675a !important;
+  --line:#d7d3ca !important;
+
+  --constantia-green:#47675a;
+  --constantia-green-deep:#2f4b40;
+  --constantia-green-soft:#e4ebe7;
+  --constantia-cream:#f1ede4;
+  --constantia-cream-light:#faf8f2;
+  --constantia-gray:#7f7e7a;
+  --constantia-black:#202020;
+}
+
+/* Core typography */
+html,body{
+  font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif !important;
+  color:var(--constantia-black) !important;
+  background:linear-gradient(180deg,#f1ede4 0%,#faf8f2 100%) !important;
+}
+
+button,input,select,textarea{
+  font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif !important;
+}
+
+h1,h2,h3,h4,.month-name,.toolbar .year,.brand h1,.auth-brand h2{
+  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif !important;
+  letter-spacing:.01em;
+}
+
+.brand h1{
+  color:var(--constantia-green-deep) !important;
+  font-size:28px !important;
+  font-weight:700 !important;
+  letter-spacing:.035em !important;
+}
+
+.brand small,
+#profileTopLine{
+  color:var(--constantia-gray) !important;
+  font-family:'Montserrat',sans-serif !important;
+}
+
+/* Functional controls retain their existing geometry */
+button{
+  color:var(--constantia-black);
+  border-color:var(--line) !important;
+}
+
+.primary,
+.bottom-nav .bottom-new{
+  background:var(--constantia-green) !important;
+  border-color:var(--constantia-green) !important;
+  color:#fff !important;
+}
+
+.primary:hover,
+.bottom-nav .bottom-new:hover{
+  background:var(--constantia-green-deep) !important;
+}
+
+.menu-btn,
+header button,
+.view-toggle button,
+.toolbar button{
+  background:var(--constantia-cream-light) !important;
+  color:var(--constantia-green-deep) !important;
+  border-color:var(--line) !important;
+}
+
+.menu-btn.active,
+.view-toggle .active,
+.view-toggle button.active{
+  background:var(--constantia-green-soft) !important;
+  border-color:#aebeb5 !important;
+  color:var(--constantia-green-deep) !important;
+}
+
+/* Calendar surfaces */
+.year-shell{
+  background:rgba(250,248,242,.94) !important;
+  border-color:var(--line) !important;
+  box-shadow:0 5px 18px rgba(32,32,32,.06) !important;
+}
+
+.month-card{
+  background:var(--constantia-cream-light) !important;
+  border-color:var(--line) !important;
+}
+
+.month-card.current{
+  box-shadow:0 0 0 2px var(--constantia-green) inset !important;
+}
+
+.month-name{
+  color:var(--constantia-green-deep) !important;
+  font-weight:700 !important;
+}
+
+.mini-week div{
+  color:var(--constantia-gray) !important;
+}
+
+.mini-num{
+  color:var(--constantia-black);
+}
+
+.mini-day.selected{
+  background:#e9eee9 !important;
+}
+
+.mini-day.today .mini-num{
+  box-shadow:0 0 0 2px var(--constantia-green) !important;
+}
+
+/* Legend and secondary information */
+.legend{
+  color:var(--constantia-gray) !important;
+  font-family:'Montserrat',sans-serif !important;
+}
+
+.muted,
+.notice,
+small{
+  color:var(--constantia-gray);
+}
+
+/* Cards and panels */
+.about-box,.profile-box,.share-box,.install-box{
+  background:var(--constantia-cream-light) !important;
+  border-color:var(--line) !important;
+}
+
+.about-box h3,.profile-box h3,.share-box h3,.install-box h3{
+  color:var(--constantia-green-deep) !important;
+}
+
+/* Bottom navigation */
+.bottom-nav{
+  background:rgba(250,248,242,.96) !important;
+  border-color:var(--line) !important;
+  box-shadow:0 10px 30px rgba(32,32,32,.14) !important;
+}
+
+.bottom-nav button{
+  color:var(--constantia-green-deep) !important;
+}
+
+/* Authentication screen */
+.auth-gate{
+  background:linear-gradient(145deg,#f1ede4,#faf8f2) !important;
+}
+
+.auth-card{
+  background:#faf8f2 !important;
+  border-color:var(--line) !important;
+  box-shadow:0 20px 70px rgba(32,32,32,.14) !important;
+}
+
+.auth-brand h2{
+  color:var(--constantia-green-deep) !important;
+  font-size:31px !important;
+  letter-spacing:.04em;
+}
+
+.auth-brand p{
+  color:var(--constantia-gray) !important;
+  font-family:'Allura','Brush Script MT',cursive !important;
+  font-size:25px !important;
+  line-height:1.15;
+}
+
+.auth-links button{
+  color:var(--constantia-green-deep) !important;
+}
+
+/* Text-entry surfaces */
+input,select,textarea{
+  background:#fcfbf7 !important;
+  color:var(--constantia-black) !important;
+  border-color:var(--line) !important;
+}
+
+input:focus,select:focus,textarea:focus{
+  outline:none;
+  border-color:var(--constantia-green) !important;
+  box-shadow:0 0 0 3px rgba(71,103,90,.13) !important;
+}
+
+/* More-menu / title-menu surfaces */
+.title-menu,
+.more-menu{
+  background:var(--constantia-cream-light) !important;
+  border-color:var(--line) !important;
+}
+
+.title-option{
+  color:var(--constantia-green-deep) !important;
+}
+
+.title-option.active{
+  background:var(--constantia-green-soft) !important;
+  color:var(--constantia-green-deep) !important;
+}
+
+
+/* CONSTANTIA v42 | visual refinement only */
+/* Layout color is fixed to the approved sage/cream identity. */
+.view-toggle button.active,
+.view-toggle .active,
+.menu-btn.active,
+.title-option.active,
+.mini-day.selected{
+  background:#ffffff !important;
+  color:var(--constantia-green-deep) !important;
+}
+
+.month-card{
+  background:#ffffff !important;
+}
+
+.year-shell,
+.about-box,.profile-box,.share-box,.install-box,
+.bottom-nav,
+.title-menu,.more-menu{
+  background:#ffffff !important;
+}
+
+.month-name{
+  font-size:14px !important;
+  font-weight:700 !important;
+  letter-spacing:.015em !important;
+  color:var(--constantia-green-deep) !important;
+}
+
+@media(max-width:570px){
+  .month-name{
+    font-size:13px !important;
+    font-weight:700 !important;
+    letter-spacing:.01em !important;
+  }
+}
+</style>
+
+</head>
+<body>
+<div id="authGate" class="auth-gate">
+  <div class="auth-card">
+    <div class="auth-brand"><div class="mark">📅</div><h2>CONSTANTIA</h2><p>Controle seu ritmo. Tenha vida.</p></div>
+    <div id="loginForm" class="form">
+      <label for="gateEmail">E-mail</label><input id="gateEmail" type="email" autocomplete="email" placeholder="seu@email.com">
+      <label for="gatePassword">Senha</label><input id="gatePassword" type="password" autocomplete="current-password" placeholder="Sua senha">
+      <div class="actions-row"><button class="primary" id="gateLogin" type="button" onclick="gateSignIn()">Entrar</button><button id="gateSignup" type="button" onclick="gateSignUp()">Criar conta</button></div>
+      <div class="auth-links"><button id="forgotPassword" type="button" onclick="showForgotForm()">Esqueci minha senha</button></div>
+    </div>
+    <div id="resetForm" class="form" style="display:none">
+      <label for="resetEmail">E-mail da conta</label><input id="resetEmail" type="email" autocomplete="email" placeholder="seu@email.com">
+      <div class="actions-row"><button class="primary" id="sendReset" type="button" onclick="sendPasswordReset()">Enviar link de recuperação</button><button id="backToLogin" type="button" onclick="showLoginGate()">Voltar</button></div>
+    </div>
+    <div id="newPasswordForm" class="form" style="display:none">
+      <label for="newPassword">Nova senha</label><input id="newPassword" type="password" autocomplete="new-password" placeholder="Mínimo de 6 caracteres">
+      <label for="newPassword2">Confirmar nova senha</label><input id="newPassword2" type="password" autocomplete="new-password" placeholder="Digite novamente">
+      <div class="actions-row"><button class="primary" id="saveNewPassword" type="button" onclick="saveNewPassword()">Salvar nova senha</button></div>
+    </div>
+    <div id="gateStatus" class="auth-status"></div>
+  </div>
+</div>
+<div class="app">
+<header class="main-header v21-header">
+  <div class="v21-top">
+    <div class="brand-title" id="brandTitle"><h1 id="appTitle">CONSTANTIA</h1></div>
+    <button type="button" class="home-link" id="homeCalendar" aria-label="Início">📅 <span>Início</span></button>
+  </div>
+
+  <div class="v21-actions">
+    <button type="button" class="mode-option" id="modeShifts" data-section="shifts">📅 Plantão</button>
+    <button type="button" class="mode-option" id="modeRoutine" data-section="routine">🗂️ Rotina</button>
+    <button type="button" class="mode-option" id="modeTags" data-section="tags">🏷️ Minhas tags</button>
+    <button type="button" class="mode-option" id="headerNotifications">🔔 Notificações</button>
+    <button type="button" id="moreBtn" class="more-button" aria-label="Mais opções">⋮</button>
+  </div>
+
+  <div class="year-controls v21-years">
+    <button id="prevYear">‹ Ano</button>
+    <strong id="headerYear">2026</strong>
+    <button id="nextYear">Ano ›</button>
+  </div>
+  <div class="header-view-toggle" role="group" aria-label="Visualização do calendário">
+    <button id="yearView" class="active" type="button">Ano</button>
+    <button id="monthView" type="button">Mês</button>
+  </div>
+</header>
+<div class="public-share-note" id="publicShareNote">🔒 Visualização compartilhada • Somente leitura</div>
+<nav class="bottom-nav" aria-label="Navegação principal">
+  <button type="button" id="bottomProfile">👤<span>Perfil</span></button>
+  <button type="button" id="bottomNew" class="bottom-new">＋<span>Novo</span></button>
+  <button type="button" id="bottomSummary">📊<span>Resumos</span></button>
+</nav>
+<div class="menu-bar">
+  <button type="button" class="menu-btn active" data-menu="calendar">📅 Calendário</button>
+  <button type="button" class="menu-btn" data-menu="share">🔗 Compartilhar</button>
+  <button type="button" class="menu-btn" data-menu="summary">📊 Resumo</button>
+  <button type="button" class="menu-btn" data-menu="notifications">🔔 Notificações</button>
+  <button type="button" class="menu-btn" data-menu="install">📲 Adicionar à tela inicial</button>
+  <button type="button" class="menu-btn" data-menu="about">ℹ️ Sobre</button>
+  <button type="button" class="menu-btn" data-menu="profile">👤 Editar perfil</button>
+  <button type="button" class="menu-btn" id="logoutButton">🔒 Sair</button>
+</div>
+
+<div id="menuCalendar" class="menu-section open"></div>
+<div id="menuMore" class="menu-section">
+  <div class="share-box">
+    <h3>⚙️ Mais opções</h3>
+    <div class="actions-row">
+      <button type="button" id="moreShare">🔗 Compartilhar</button>
+      <button type="button" id="moreNotifications">🔔 Notificações</button>
+      <button type="button" id="moreInstall">📲 Tela inicial</button>
+      <button type="button" id="moreAbout">ℹ️ Sobre</button><button type="button" id="moreLogout">🔒 Sair</button>
+    </div>
+  </div>
+</div>
+<div id="menuSummary" class="menu-section">
+  <div class="share-box">
+    <h3>📊 Resumo</h3>
+    <div class="muted">Resumo dos registros do período atualmente selecionado.</div>
+    <div id="summaryContent"></div>
+    <div class="actions-row"><button type="button" id="closeSummary">Voltar ao calendário</button></div>
+  </div>
+</div>
+<div id="menuRoutine" class="menu-section">
+  <div class="share-box">
+    <h3>🗂️ Rotina</h3>
+    <p class="muted">A Rotina possui calendário, eventos, preenchimento de círculos, tags próprias, notificações e resumo independente.</p>
+    <div class="actions-row"><button type="button" class="primary" id="openRoutineCalendar">Abrir calendário da rotina</button></div>
+  </div>
+</div>
+<div id="menuShare" class="menu-section">
+  <div class="share-box">
+    <h3>🔗 Compartilhar calendário</h3>
+    <div class="muted">Selecione exatamente o que deseja colocar no link. O link gerado pode ser enviado para outra pessoa, que verá apenas os dados escolhidos.</div>
+    <div class="share-checks">
+      <label class="check"><input type="checkbox" id="shareEvents" checked> Plantões e eventos</label>
+      <label class="check"><input type="checkbox" id="shareTags" checked> Tags, emojis e cores</label>
+      <label class="check"><input type="checkbox" id="shareProfile"> Perfil e cargo</label>
+      <label class="check"><input type="checkbox" id="shareBanner"> Foto e banner</label>
+    </div>
+    <div class="actions-row">
+      <button type="button" class="primary" id="generateLink">Gerar link</button>
+      <button type="button" id="closeShare">Voltar ao calendário</button>
+    </div>
+    <div id="shareResult"></div>
+  </div>
+</div>
+
+<div id="menuNotifications" class="menu-section">
+  <div class="notification-box">
+    <h3>🔔 Notificações de plantões</h3>
+    <div class="muted">Receba um aviso neste dispositivo antes do início dos seus próximos plantões.</div>
+    <div id="notificationStatus" class="notification-status">Verificando permissão...</div>
+    <div class="notification-grid">
+      <label>Antecedência<select id="notificationLead"><option value="15">15 minutos</option><option value="30">30 minutos</option><option value="60" selected>1 hora</option><option value="120">2 horas</option><option value="180">3 horas</option><option value="1440">1 dia</option></select></label>
+      <label>Estado<select id="notificationEnabled"><option value="true">Ativados</option><option value="false">Desativados</option></select></label>
+    </div>
+    <div class="actions-row"><button type="button" class="primary" id="enableNotifications">🔔 Permitir notificações</button><button type="button" id="testNotification">🧪 Testar aviso</button></div>
+    <div id="nextNotification" class="muted"></div>
+  </div>
+</div>
+
+<div id="menuInstall" class="menu-section">
+  <div class="install-box">
+    <h3>📲 Adicionar à tela inicial</h3>
+    <div class="muted">Em navegadores compatíveis, você poderá instalar o calendário como um app. Se o navegador não oferecer instalação automática, use o menu do navegador e escolha “Adicionar à tela inicial” ou “Instalar app”.</div>
+    <div class="actions-row"><button type="button" class="primary" id="installApp">Adicionar à tela inicial</button></div>
+    <div id="installStatus" class="muted"></div>
+  </div>
+</div>
+
+<div id="menuAbout" class="menu-section">
+  <div class="about-box">
+    <h3>ℹ️ Sobre o app</h3>
+    <p><strong>CONSTANTIA</strong></p>
+    <p class="muted">Conceito, projeto e autoria: <strong>Elis Fernandes</strong>.</p>
+    <p class="muted"><strong>Propriedade intelectual:</strong> conceito e projeto do aplicativo de autoria de <strong>Elis Fernandes</strong>. Esta descrição registra a autoria declarada do projeto dentro do app. Caso exista um pedido, registro ou patente formal, o número poderá ser acrescentado posteriormente sem alterar a autoria.</p>
+    <p class="muted">Para proteção formal de uma invenção ou modelo de negócio, o registro adequado depende da natureza da solução e da legislação aplicável.</p>
+  </div>
+</div>
+
+<div id="menuProfile" class="menu-section">
+  <div class="profile-box">
+    <h3>👤 Editar perfil</h3>
+    <div class="profile-banner" id="profileBannerCard"><img id="profileAvatarCard" class="profile-avatar" alt="Foto de perfil"><span id="profileNameCard" class="profile-name">Elis Fernandes</span></div>
+    <div class="form">
+      <label>Nome</label><input id="profileName" value="Elis Fernandes" maxlength="60">
+      <label>Usuário do compartilhamento</label><input id="profileUsername" placeholder="ex.: elis" maxlength="30" autocomplete="username">
+      <div class="muted">Seu link ficará assim: /seu-usuário</div>
+      <label>Cargo</label><input id="profileRole" placeholder="Ex.: Técnica de Enfermagem" maxlength="80">
+      <label>Foto de perfil</label><input id="profilePhoto" type="file" accept="image/*">
+      <img id="profileAvatarPreview" class="preview-avatar" alt="Pré-visualização da foto de perfil">
+      <label>Imagem para banner no topo</label><input id="profileBanner" type="file" accept="image/*">
+      <div id="profileBannerPreview" class="preview-banner"></div>
+    </div>
+    <div class="actions-row">
+      <button type="button" class="primary" id="saveProfile">Salvar perfil</button>
+      <button type="button" id="clearProfileImages">Remover imagens</button>
+    </div>
+  </div>
+</div>
+
+<div id="calendarContent">
+  <div class="legend" id="legend"></div>
+  <div id="calendarArea"></div>
+  <div class="swipe-hint">Deslize para a esquerda ou direita para mudar a visualização</div>
+</div>
+</div>
+
+<div class="modal-back" id="back"><div class="modal" id="modal"></div></div>
+
+<script>
+/* CONSTANTIA RUNTIME FOUNDATION v32 */
+var currentUser=null;
+var cloudReady=false;
+var cloudSyncInFlight=false;
+var authHandlingPromise=null;
+var authHandlingUserId=null;
+var passwordRecoveryActive=false;
+var constantiaStorage=(function(){
+  var memory={};
+  try{
+    var s=window.localStorage;
+    var probe='__constantia_storage_probe__';
+    s.setItem(probe,'1'); s.removeItem(probe);
+    return {
+      get:function(k){try{return s.getItem(k);}catch(e){return Object.prototype.hasOwnProperty.call(memory,k)?memory[k]:null;}},
+      set:function(k,v){try{s.setItem(k,v);}catch(e){memory[k]=String(v);}},
+      remove:function(k){try{s.removeItem(k);}catch(e){delete memory[k];}}
+    };
+  }catch(e){
+    return {
+      get:function(k){return Object.prototype.hasOwnProperty.call(memory,k)?memory[k]:null;},
+      set:function(k,v){memory[k]=String(v);},
+      remove:function(k){delete memory[k];}
+    };
+  }
+})();
+const monthNames=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+const days=['dom','seg','ter','qua','qui','sex','sáb'];
+const colors=['#a9bd68','#48a8df','#8e63a7','#e6a04d','#dc6f9a','#65a9a0','#d85a5a','#7b8794','#b47d5a','#5d8ac4'];
+const defaultTags=[
+ {id:'shift',name:'Plantão',emoji:'🩺',color:'#a9bd68',kind:'shift',displayMode:'circle'},
+ {id:'paid',name:'Folga remunerada',emoji:'💰',color:'#48a8df',kind:'paid',displayMode:'circle'},
+ {id:'done',name:'Realizado',emoji:'✅',color:'#72a33e',kind:'done',displayMode:'circle'},
+ {id:'missed',name:'Falta',emoji:'❌',color:'#d85a5a',kind:'missed',displayMode:'circle'}
+];
+function readJSON(key,fallback){
+  try{
+    const raw=constantiaStorage.get(key);
+    return raw?JSON.parse(raw):fallback;
+  }catch(e){
+    return fallback;
+  }
+}
+let appMode=constantiaStorage.get('constantiaMode')==='routine'?'routine':'shifts';
+let tags=readJSON(appMode==='routine'?'routineTags':'plantaoTags',appMode==='routine'?[]:defaultTags);
+let events=readJSON(appMode==='routine'?'routineEvents':'plantaoEvents', {});
+if(appMode==='shifts' && !Object.keys(events).length)events={
+ '2026-09-02':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-04':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-05':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-06':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-07':{tagId:'missed',time:'09:00 – 21:00'},
+ '2026-09-08':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-10':{tagId:'paid',time:'09:00 – 21:00'},
+ '2026-09-12':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-14':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-16':{tagId:'done',time:'09:00 – 21:00'},
+ '2026-09-18':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-20':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-22':{tagId:'paid',time:'09:00 – 21:00'},
+ '2026-09-24':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-26':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-28':{tagId:'shift',time:'09:00 – 21:00'},
+ '2026-09-30':{tagId:'shift',time:'09:00 – 21:00'}
+};
+let viewYear=2026, viewMode='year', selected=new Date(2026,8,10);
+const k=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+let cloudSyncTimer=null;
+const save=()=>{
+  constantiaStorage.set(appMode==='routine'?'routineEvents':'plantaoEvents',JSON.stringify(events));
+  constantiaStorage.set(appMode==='routine'?'routineTags':'plantaoTags',JSON.stringify(tags));
+  if(appMode==='shifts')queueCloudSync();
+  queuePublicShareRefresh();
+};
+function switchAppMode(mode){
+  if(mode===appMode)return;
+  save();
+  appMode=mode==='routine'?'routine':'shifts';
+  constantiaStorage.set('constantiaMode',appMode);
+  const eventKey=appMode==='routine'?'routineEvents':'plantaoEvents';
+  const tagKey=appMode==='routine'?'routineTags':'plantaoTags';
+  events=readJSON(eventKey,{});
+  tags=readJSON(tagKey,appMode==='routine'?[]:defaultTags);
+  viewMode='year';
+  const now=new Date();
+  viewYear=now.getFullYear();
+  selected=new Date(viewYear,now.getMonth(),now.getDate());
+  updateModeUI();
+  showMenu('calendar');
+  render();
+}
+function updateModeUI(){
+  const title=document.getElementById('appTitle');
+  if(title)title.textContent='CONSTANTIA';
+  document.getElementById('modeShifts')?.classList.toggle('active',appMode==='shifts');
+  document.getElementById('modeRoutine')?.classList.toggle('active',appMode==='routine');
+  const headerYear=document.getElementById('headerYear');
+  if(headerYear)headerYear.textContent=viewYear;
+  const summaryTitle=document.querySelector('#menuSummary h3');
+  if(summaryTitle)summaryTitle.textContent=appMode==='routine'?'📊 Resumo da rotina':'📊 Resumo de plantões';
+}
+let publicShareRefreshTimerOwner=null;
+function queuePublicShareRefresh(){
+  if(window.constantiaPublicShare||!currentUser||!profile.username)return;
+  clearTimeout(publicShareRefreshTimerOwner);
+  publicShareRefreshTimerOwner=setTimeout(async()=>{
+    try{
+      const client=await ensureSupabaseClient();
+      const{data,error}=await client.rpc('refresh_public_share',{
+        p_username:normalizeUsername(profile.username),
+        p_events:events,
+        p_tags:tags,
+        p_profile:{name:profile.name,role:profile.role},
+        p_profile_images:{photo:profile.photo,banner:profile.banner}
+      });
+      if(error)console.error('CONSTANTIA share refresh:',error);
+      else if(data)console.log('CONSTANTIA share updated:',data);
+    }catch(e){console.error('CONSTANTIA share refresh:',e);}
+  },500);
+}
+const tag=id=>tags.find(t=>t.id===id)||tags[0];
+
+
+let installPromptEvent=null;
+let profile=readJSON('plantaoProfile',{name:'Elis Fernandes',username:'elis',role:'',photo:'',banner:'',color:'#76528b'});
+
+function applyProfile(){
+ document.documentElement.style.setProperty('--purple',profile.color||'#76528b');
+ const title=document.getElementById('appTitle'); if(title)title.innerHTML='CONSTANTIA<span class="title-caret">⌄</span>';
+ const top=document.getElementById('profileTopLine'); if(top)top.textContent=profile.role?`${profile.name} • ${profile.role}`:profile.name;
+ const avatar=document.getElementById('profileAvatarPreview');
+ const cardAvatar=document.getElementById('profileAvatarCard');
+ const cardBanner=document.getElementById('profileBannerCard');
+ const cardName=document.getElementById('profileNameCard');
+ if(cardName)cardName.textContent=profile.role?`${profile.name} • ${profile.role}`:profile.name;
+ if(cardAvatar){cardAvatar.src=profile.photo||'';cardAvatar.style.display=profile.photo?'block':'none'}
+ if(cardBanner)cardBanner.style.backgroundImage=profile.banner?`url("${profile.banner}")`:'';
+
+ const banner=document.getElementById('profileBannerPreview');
+ if(avatar){avatar.src=profile.photo||'';avatar.style.display=profile.photo?'block':'none'}
+ if(banner){banner.style.backgroundImage=profile.banner?`url("${profile.banner}")`:''}
+ document.title='CONSTANTIA';
+}
+function fileToDataURL(file,cb){
+ if(!file){cb('');return}
+ const r=new FileReader();r.onload=()=>cb(String(r.result));r.readAsDataURL(file);
+}
+function setupTitleMenu(){
+  document.getElementById('modeShifts')?.addEventListener('click',()=>switchAppMode('shifts'));
+  document.getElementById('modeRoutine')?.addEventListener('click',()=>switchAppMode('routine'));
+  document.getElementById('modeTags')?.addEventListener('click',()=>openTags());
+  document.getElementById('homeCalendar')?.addEventListener('click',()=>showMenu('calendar'));
+}
+function showMenu(name){
+  document.querySelectorAll('.menu-section').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.menu-btn').forEach(x=>x.classList.remove('active'));
+
+  const section = document.getElementById('menu' + name.charAt(0).toUpperCase() + name.slice(1));
+  const calendar = document.getElementById('calendarContent');
+
+  if(name === 'calendar'){
+    if(calendar)calendar.style.display = '';
+    updateModeUI();
+    setTimeout(()=>window.scrollTo({top:0,behavior:'smooth'}),0);
+  }else{
+    if(calendar)calendar.style.display = 'none';
+    if(section) section.classList.add('open');
+  }
+
+  const btn = document.querySelector(`[data-menu="${name}"]`);
+  if(btn) btn.classList.add('active');
+
+  if(name === 'summary') renderSummary();
+  if(name === 'notifications') notificationStatus();
+}
+function base64url(obj){
+ return btoa(unescape(encodeURIComponent(JSON.stringify(obj)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function normalizeUsername(value){return String(value||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9._-]+/g,'-').replace(/^-+|-+$/g,'').slice(0,30)}
+function suggestedUsername(){return normalizeUsername(profile.username||profile.name||'usuario')||'usuario'}
+async function savePublicShare(){
+ if(!currentUser){alert('Entre na sua conta para gerar um link de compartilhamento.');return null;}
+ const username=normalizeUsername(document.getElementById('profileUsername')?.value||profile.username||profile.name);
+ if(!/^[a-z0-9][a-z0-9._-]{2,29}$/.test(username)){alert('Escolha um usuário com 3 a 30 caracteres: letras, números, ponto, hífen ou sublinhado.');return null;}
+ const options={
+   events:!!document.getElementById('shareEvents')?.checked,
+   tags:!!document.getElementById('shareTags')?.checked,
+   profile:!!document.getElementById('shareProfile')?.checked,
+   banner:!!document.getElementById('shareBanner')?.checked
+ };
+ const payload={v:2};
+ if(options.events)payload.events=events;
+ if(options.tags)payload.tags=tags;
+ if(options.profile)payload.profile={name:profile.name,role:profile.role};
+ if(options.banner)payload.profileImages={photo:profile.photo,banner:profile.banner};
+ constantiaStorage.set('constantiaShareOptions',JSON.stringify(options));
+ const client=await ensureSupabaseClient();
+ const{data,error}=await client.rpc('publish_public_share',{
+   p_username:username,
+   p_payload:payload,
+   p_options:options
+ });
+ if(error){
+   console.error('CONSTANTIA publish share:',error);
+   const msg=String(error.message||'');
+   if(/USERNAME_TAKEN|duplicate|unique/i.test(msg))alert('Esse usuário já está em uso. Escolha outro.');
+   else if(/AUTH_REQUIRED|JWT|not authenticated/i.test(msg))alert('Sua sessão expirou. Entre novamente na conta e tente gerar o link.');
+   else alert('Não foi possível publicar o compartilhamento: '+msg);
+   return null;
+ }
+ if(!data){alert('O compartilhamento não retornou um link válido. Tente novamente.');return null;}
+ profile.username=username;constantiaStorage.set('plantaoProfile',JSON.stringify(profile));
+ // O arquivo pode estar sendo aberto localmente no Android (content://...).
+ // Nesse caso location.href NÃO é o endereço público do aplicativo.
+ // O link de compartilhamento deve sempre apontar para a publicação oficial.
+ const publicUrl=new URL('https://fselis05.github.io/constantia-/');
+ publicUrl.searchParams.set('share',username);
+ return publicUrl.href;
+}
+async function generateShareLink(){
+ const out=document.getElementById('shareResult');if(out)out.innerHTML='<div class="notice" style="margin-top:10px">Publicando link curto...</div>';
+ try{
+   const href=await savePublicShare();if(!href)return null;
+   if(out)out.innerHTML=`<div class="notice" style="margin-top:10px;word-break:break-all"><strong>Link curto</strong><a id="shareLinkAnchor" href="${htmlEscape(href)}" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:7px;text-decoration:underline;overflow-wrap:anywhere">${htmlEscape(href)}</a><input id="shareLinkOutput" value="${htmlEscape(href)}" readonly style="width:100%;margin-top:7px"><div class="actions-row"><button type="button" id="copyShareLink">Copiar link</button><a href="${htmlEscape(href)}" target="_blank" rel="noopener noreferrer"><button type="button">Abrir link</button></a></div></div>`;
+   return href;
+ }catch(err){console.error(err);if(out)out.innerHTML='<div class="notice">Não foi possível gerar o link agora.</div>';return null;}
+}
+async function loadPublicShareFromPath(){
+ const parts=location.pathname.split('/').filter(Boolean);
+ const pathUsername=parts[0]==='constantia-'&&parts[1]?normalizeUsername(parts[1]):'';
+ const queryUsername=normalizeUsername(new URLSearchParams(location.search).get('share')||'');
+ const username=pathUsername||queryUsername;
+ if(!username)return false;
+ try{
+   const client=await ensureSupabaseClient();
+   const{data,error}=await client.rpc('get_public_share',{p_username:username});
+   if(error){
+     console.error('CONSTANTIA public share RPC:',error);
+     return false;
+   }
+   if(!data)return false;
+   if(data.events)events=data.events;
+   if(data.tags)tags=data.tags;
+   if(data.profile)profile={...profile,...data.profile};
+   if(data.profileImages)profile={...profile,...data.profileImages};
+   window.constantiaPublicShare=true;
+   window.constantiaPublicShareUsername=username;
+   return true;
+ }catch(e){
+   console.error('CONSTANTIA public share:',e);
+   return false;
+ }
+}
+async function refreshPublicShare(){
+ if(!window.constantiaPublicShare||!window.constantiaPublicShareUsername)return false;
+ try{
+   const client=await ensureSupabaseClient();
+   const{data,error}=await client.rpc('get_public_share',{p_username:window.constantiaPublicShareUsername});
+   if(error||!data)return false;
+   if(data.events)events=data.events; else delete window._publicShareEvents;
+   if(data.tags)tags=data.tags;
+   if(data.profile)profile={...profile,...data.profile};
+   if(data.profileImages)profile={...profile,...data.profileImages};
+   applyProfile();
+   render();
+   return true;
+ }catch(e){
+   console.error('CONSTANTIA public share refresh:',e);
+   return false;
+ }
+}
+function activatePublicShareMode(){
+ document.body.classList.add('constantia-public-share');
+ const note=document.getElementById('publicShareNote');
+ if(note)note.style.display='block';
+ const auth=document.getElementById('authButton');
+ if(auth)auth.remove();
+ document.querySelectorAll('[data-menu]').forEach(btn=>{
+   const keep=['calendar','summary'].includes(btn.dataset.menu);
+   if(!keep)btn.style.display='none';
+ });
+ document.getElementById('menuShare')?.classList.remove('open');
+ document.getElementById('menuProfile')?.classList.remove('open');
+ document.getElementById('menuAbout')?.classList.remove('open');
+ document.getElementById('menuInstall')?.classList.remove('open');
+ document.getElementById('menuNotifications')?.classList.remove('open');
+}
+let publicShareRefreshTimer=null;
+function startPublicShareRefresh(){
+ clearInterval(publicShareRefreshTimer);
+ publicShareRefreshTimer=setInterval(()=>refreshPublicShare(),30000);
+ document.addEventListener('visibilitychange',()=>{
+   if(document.visibilityState==='visible')refreshPublicShare();
+ });
+ window.addEventListener('focus',()=>refreshPublicShare());
+}
+function showSharedData(){
+ const hash=location.hash;
+ if(!hash.startsWith('#compartilhado='))return;
+ try{
+   const code=hash.substring('#compartilhado='.length).replace(/-/g,'+').replace(/_/g,'/');
+   const json=decodeURIComponent(escape(atob(code)));
+   const p=JSON.parse(json);
+   if(p.events)events=p.events;
+   if(p.tags)tags=p.tags;
+   if(p.profile)profile={...profile,...p.profile};
+   if(p.profileImages)profile={...profile,...p.profileImages};
+   save();constantiaStorage.set('plantaoProfile',JSON.stringify(profile));
+ }catch(e){}
+}
+function saveProfile(){
+ const name=(document.getElementById('profileName')?.value||'').trim();
+ const username=normalizeUsername(document.getElementById('profileUsername')?.value||name);
+ const role=(document.getElementById('profileRole')?.value||'').trim();
+ const color='#47675a';
+ if(!name){alert('Informe seu nome.');return false;}
+ profile={...profile,name,username,role,color};
+ constantiaStorage.set('plantaoProfile',JSON.stringify(profile));
+ applyProfile();
+ queueCloudSync();
+ queuePublicShareRefresh();
+ showMenu('calendar');
+ return true;
+}
+function setupMenu(){
+ document.querySelectorAll('[data-menu]').forEach(b=>b.addEventListener('click',()=>showMenu(b.dataset.menu)));
+ document.getElementById('closeShare').onclick=()=>showMenu('calendar');
+ document.getElementById('moreBtn')?.addEventListener('click',()=>showMenu('more'));
+ document.getElementById('moreShare')?.addEventListener('click',()=>showMenu('share'));
+ document.getElementById('moreNotifications')?.addEventListener('click',()=>showMenu('notifications'));
+ document.getElementById('headerNotifications')?.addEventListener('click',()=>showMenu('notifications'));
+ document.getElementById('moreInstall')?.addEventListener('click',()=>showMenu('install'));
+ document.getElementById('moreAbout')?.addEventListener('click',()=>showMenu('about'));
+ document.getElementById('moreLogout')?.addEventListener('click',async()=>{
+   try{const client=await ensureSupabaseClient();await client.auth.signOut();}finally{showLoginGate();}
+ });
+ document.getElementById('logoutButton')?.addEventListener('click',async()=>{
+   try{const client=await ensureSupabaseClient();await client.auth.signOut();}finally{showLoginGate();}
+ });
+ document.getElementById('homeCalendar')?.addEventListener('click',()=>showMenu('calendar'));
+ document.getElementById('closeSummary').onclick=()=>showMenu('calendar');
+ try{
+   const savedShareOptions=JSON.parse(constantiaStorage.get('constantiaShareOptions')||'null');
+   if(savedShareOptions){
+     if(document.getElementById('shareEvents'))document.getElementById('shareEvents').checked=savedShareOptions.events!==false;
+     if(document.getElementById('shareTags'))document.getElementById('shareTags').checked=savedShareOptions.tags!==false;
+     if(document.getElementById('shareProfile'))document.getElementById('shareProfile').checked=!!savedShareOptions.profile;
+     if(document.getElementById('shareBanner'))document.getElementById('shareBanner').checked=!!savedShareOptions.banner;
+   }
+ }catch(e){}
+ const generateLink=document.getElementById('generateLink');
+ if(generateLink)generateLink.onclick=generateShareLink;
+ document.getElementById('profileName').value=profile.name||'Elis Fernandes';
+ document.getElementById('profileUsername').value=profile.username||suggestedUsername();
+ document.getElementById('profileRole').value=profile.role||'';
+
+ document.getElementById('profileAvatarPreview').src=profile.photo||'';
+ document.getElementById('profileAvatarCard').src=profile.photo||'';
+ document.getElementById('profileAvatarCard').style.display=profile.photo?'block':'none';
+ document.getElementById('profileNameCard').textContent=profile.role?`${profile.name} • ${profile.role}`:profile.name;
+ document.getElementById('profileAvatarPreview').style.display=profile.photo?'block':'none';
+ if(profile.banner)document.getElementById('profileBannerPreview').style.backgroundImage=`url("${profile.banner}")`;
+ document.getElementById('profilePhoto').onchange=e=>fileToDataURL(e.target.files[0],u=>{
+   profile.photo=u;document.getElementById('profileAvatarPreview').src=u;document.getElementById('profileAvatarPreview').style.display=u?'block':'none';
+ });
+ document.getElementById('profileBanner').onchange=e=>fileToDataURL(e.target.files[0],u=>{
+   profile.banner=u;document.getElementById('profileBannerPreview').style.backgroundImage=u?`url("${u}")`:'';
+ });
+ document.getElementById('saveProfile').onclick=saveProfile;
+ document.getElementById('clearProfileImages').onclick=()=>{
+   profile.photo='';profile.banner='';
+   constantiaStorage.set('plantaoProfile',JSON.stringify(profile));
+   document.getElementById('profileAvatarPreview').src='';
+   document.getElementById('profileAvatarPreview').style.display='none';
+   document.getElementById('profileBannerPreview').style.backgroundImage='';
+ };
+ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPromptEvent=e;});
+}
+
+function periodValues(){
+  return Object.entries(events||{})
+    .filter(([date])=>{
+      if(viewMode==='month'){
+        return date.startsWith(`${selected.getFullYear()}-${String(selected.getMonth()+1).padStart(2,'0')}-`);
+      }
+      return date.startsWith(`${viewYear}-`);
+    })
+    .map(([,e])=>e);
+}
+function calculatePeriodStats(){
+  const vals=periodValues();
+  const counts={scheduled:0,completed:0,missed:0,paid:0,other:0};
+  vals.forEach(e=>{
+    const kind=tag(e.tagId).kind;
+    if(e.filled) counts.completed++;
+    if(kind==='shift' && !e.filled) counts.scheduled++;
+    else if(kind==='missed') counts.missed++;
+    else if(kind==='paid') counts.paid++;
+    else if(kind!=='done') counts.other++;
+  });
+  return {vals,counts};
+}
+function renderSummary(){
+  const box=document.getElementById('summaryContent');
+  if(!box)return;
+
+  const period=viewMode==='month'
+    ? `${monthNames[selected.getMonth()]} de ${selected.getFullYear()}`
+    : `ano de ${viewYear}`;
+
+  const {vals,counts}=calculatePeriodStats();
+
+  box.innerHTML=`
+    <div class="stats" style="margin-top:12px">
+      <div class="stat"><b>${vals.length}</b><span>Total</span></div>
+      <div class="stat"><b>${counts.scheduled}</b><span>Programados</span></div>
+      <div class="stat"><b>${counts.completed}</b><span>Realizados</span></div>
+      <div class="stat"><b>${counts.missed}</b><span>Faltas</span></div>
+      <div class="stat"><b>${counts.paid}</b><span>Folgas pagas</span></div>
+    </div>
+    <div class="notice" style="margin-top:12px">
+      <strong>${period}</strong><br>
+      Círculos preenchidos são contabilizados automaticamente como realizados, independentemente da tag.
+      ${counts.other ? `<br>${counts.other} outro(s) registro(s) sem preenchimento.` : ''}
+    </div>`;
+}
+
+function render(){
+ if(document.getElementById('yearTitle'))document.getElementById('yearTitle').textContent=viewYear;
+ if(document.getElementById('headerYear'))document.getElementById('headerYear').textContent=viewYear;
+ const monthModeTitle=document.getElementById('monthModeTitle'); if(monthModeTitle)monthModeTitle.textContent=viewMode==='month'?`• ${monthNames[selected.getMonth()]}`:'• Visão anual';
+ const swipeHint=document.querySelector('.swipe-hint'); if(swipeHint)swipeHint.textContent=viewMode==='month'?'Deslize ou use as setas para trocar de mês':'Toque em um mês para abrir; deslize para os lados para trocar de ano';
+ const yearView=document.getElementById('yearView'); if(yearView)yearView.classList.toggle('active',viewMode==='year');
+ const monthView=document.getElementById('monthView'); if(monthView)monthView.classList.toggle('active',viewMode==='month');
+ const calendarArea=document.getElementById('calendarArea'); if(calendarArea)calendarArea.innerHTML=viewMode==='year'?yearHTML():monthHTML(selected.getMonth());
+ const prevMonthArrow=document.getElementById('prevMonthArrow'); if(prevMonthArrow)prevMonthArrow.style.display=viewMode==='month'?'inline-flex':'none';
+ const nextMonthArrow=document.getElementById('nextMonthArrow'); if(nextMonthArrow)nextMonthArrow.style.display=viewMode==='month'?'inline-flex':'none';
+ bindDays(); renderLegend();
+ if(document.getElementById('menuSummary')?.classList.contains('open'))renderSummary();
+}
+function dayCell(d,monthIndex){
+ const key=k(d), ev=events[key], t=ev?tag(ev.tagId):null;
+ const eventColor=ev?(ev.color||t.color):null;
+ const eventEmoji=ev?(ev.emoji||t.emoji):null;
+ const mode=t?(t.displayMode || (t.emojiMode?'emoji':'circle')):'circle';
+ const out=d.getMonth()!==monthIndex;
+ const cls='mini-day '+(out?'out ':'')+(key===k(selected)?'selected ':'')+(key===k(new Date())?'today ':'')+
+   (ev?'event ':'')+(ev&&ev.filled?'filled ':'')+
+   (ev&&mode==='emoji'?'emoji-mode ':'')+(ev&&mode==='combined'?'combined ':'');
+ return `<div class="${cls}" data-date="${key}" style="${ev?`--event-color:${eventColor};--event-bg:${ev.filled?eventColor:'#fffafd'}`:''}">
+   <span class="mini-num">${d.getDate()}</span>
+   ${ev?`<span class="emoji">${eventEmoji}</span>`:''}
+ </div>`;
+}
+function monthHTML(m=0){
+ viewYear = Number(viewYear);
+ if(m<0)m=0;if(m>11)m=11;
+ const first=new Date(viewYear,m,1), startDate=new Date(viewYear,m,1-first.getDay());
+ const currentMonth=selected.getFullYear()===viewYear && selected.getMonth()===m;
+ let s=`<div class="month-card single-month-card ${currentMonth?'current':''}" data-month="${m}"><div class="month-name">${monthNames[m]} ${viewYear}</div><div class="mini-week">${days.map(x=>`<div>${x}</div>`).join('')}</div><div class="mini-grid">`;
+ for(let i=0;i<42;i++){let d=new Date(startDate);d.setDate(startDate.getDate()+i);s+=dayCell(d,m)}
+ return s+'</div></div>';
+}
+function yearHTML(){
+ let s='<div class="year-shell"><div class="year-grid">';
+ for(let m=0;m<12;m++)s+=monthHTML(m);
+ return s+'</div></div>';
+}
+function bindDays(){
+  document.querySelectorAll('.mini-day').forEach(el=>{
+    let lastTap=0;
+    el.addEventListener('click',()=>{
+      const now=Date.now();
+      const dateValue=el.dataset.date;
+      if(viewMode==='year'){
+        selected=new Date(dateValue+'T00:00:00');
+        viewMode='month';
+        render();
+        return;
+      }
+      if(now-lastTap<360){
+        if(window.constantiaPublicShare)return;
+        const ev=events[dateValue];
+        if(ev){
+          ev.filled=!ev.filled;
+          save();
+          render();
+        }
+      }else{
+        selected=new Date(dateValue+'T00:00:00');
+        renderPanel();
+        document.querySelectorAll('.mini-day.selected').forEach(x=>x.classList.remove('selected'));
+        el.classList.add('selected');
+      }
+      lastTap=now;
+    });
+  });
+  document.querySelectorAll('.month-card').forEach(card=>{
+    card.addEventListener('click',e=>{
+      if(e.target.closest('.mini-day'))return;
+      const m=Number(card.dataset.month);
+      selected=new Date(viewYear,m,1);
+      viewMode='month';
+      render();
+    });
+  });
+}
+function renderLegend(){
+ document.getElementById('legend').innerHTML=tags.map(t=>`<span><i style="border-color:${t.color};${t.emojiMode?'background:'+t.color:''}"></i>${t.emoji} ${t.name}</span>`).join('');
+}
+function renderPanel(){
+  // O painel de eventos do dia foi removido do layout.
+  // A seleção dos dias continua funcionando pelo calendário.
+}
+
+function openEvent(){
+ if(!tags.length){
+   alert(appMode==='routine'?'Crie pelo menos uma tag de rotina antes de adicionar um registro.':'Crie uma tag antes de adicionar um registro.');
+   openTags();
+   return;
+ }
+  const ev=events[k(selected)]||{};
+  const selectedTag=ev.tagId||tags[0].id;
+
+  document.getElementById('modal').innerHTML=`
+    <h3>${ev.tagId?'Editar registro':'Novo registro'}</h3>
+    <p>${selected.getDate()} de ${monthNames[selected.getMonth()]} de ${selected.getFullYear()}</p>
+    <div class="form">
+      <label>Tag / tipo</label>
+      <select id="eventTag">
+        ${tags.map(t=>`<option value="${t.id}" ${t.id===selectedTag?'selected':''}>${t.emoji} ${t.name}</option>`).join('')}
+      </select>
+      <label>Emoji do registro</label>
+      <input id="eventEmoji" value="${ev.emoji||tag(selectedTag).emoji}" maxlength="4" placeholder="🩺">
+      <label>Cor do círculo</label>
+      <div class="color-row">${colors.map(c=>`<button type="button" class="color ${c===(ev.color||tag(selectedTag).color)?'active':''}" data-event-color="${c}" style="background:${c}" aria-label="${c}"></button>`).join('')}</div>
+      <label>Horário</label>
+      <input id="eventTime" value="${ev.time||'09:00 – 21:00'}">
+      <label>Observação</label>
+      <input id="eventNote" value="${ev.note||''}" placeholder="Opcional">
+      <label>Preencher o círculo?</label>
+      <select id="eventFilled">
+        <option value="no" ${!ev.filled?'selected':''}>Não, apenas contorno</option>
+        <option value="yes" ${ev.filled?'selected':''}>Sim, círculo preenchido</option>
+      </select>
+    </div>
+    <div class="actions-row">
+      <button class="primary" id="saveEvent">Salvar</button>
+      <button id="cancelModal">Cancelar</button>
+    </div>`;
+
+  document.getElementById('back').style.display='flex';
+
+  let eventChosenColor=ev.color||tag(selectedTag).color;
+
+  document.querySelectorAll('[data-event-color]').forEach(b=>b.onclick=()=>{
+    eventChosenColor=b.dataset.eventColor;
+    document.querySelectorAll('[data-event-color]').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+  });
+
+  document.getElementById('eventTag').onchange=()=>{
+    const t=tag(document.getElementById('eventTag').value);
+    const emoji=document.getElementById('eventEmoji');
+    emoji.value=t.emoji;
+    eventChosenColor=t.color;
+    document.querySelectorAll('[data-event-color]').forEach(x=>x.classList.toggle('active',x.dataset.eventColor===t.color));
+  };
+
+  document.getElementById('saveEvent').onclick=()=>{
+    const tagId=document.getElementById('eventTag').value;
+    const emoji=document.getElementById('eventEmoji').value.trim();
+
+    if(!emoji){
+      alert('Informe um emoji.');
+      return;
+    }
+
+    events[k(selected)]={
+      tagId,
+      emoji,
+      color:eventChosenColor,
+      time:document.getElementById('eventTime').value.trim(),
+      note:document.getElementById('eventNote').value.trim(),
+      filled:document.getElementById('eventFilled').value==='yes'
+    };
+
+    save();
+    closeModal();
+    render();
+  };
+
+  document.getElementById('cancelModal').onclick=closeModal;
+}
+function openTags(){
+ document.getElementById('modal').innerHTML=`<h3>🏷️ Minhas tags</h3><p>Crie seus próprios tipos. O emoji pode aparecer sozinho no calendário.</p>
+ <div class="notice">Exemplos: 🩺 UTI, 🌙 Noturno, 🏖️ Férias, 📚 Curso, 👶 Particular, 🚫 Atestado.</div>
+ <div class="tag-list">${tags.map(t=>`<div class="tag"><span class="emoji">${t.emoji}</span><span><b>${t.name}</b><br><small style="color:#827783">${t.color}</small></span><button data-tag="${t.id}">Editar</button></div>`).join('')}</div>
+ <div class="actions-row"><button class="primary" id="newTag">＋ Criar tag</button><button id="closeTags">Fechar</button></div>`;
+ document.getElementById('back').style.display='flex';
+ document.getElementById('newTag').onclick=()=>tagForm();
+ document.getElementById('closeTags').onclick=closeModal;
+ document.querySelectorAll('[data-tag]').forEach(b=>b.onclick=()=>tagForm(b.dataset.tag));
+}
+function tagForm(id){
+ const old=tags.find(t=>t.id===id)||{name:'',emoji:'🏷️',color:colors[0],emojiMode:false,kind:'other'};
+ document.getElementById('modal').innerHTML=`<h3>${id?'Editar tag':'Criar tag'}</h3><p>Escolha o nome, emoji e cor do círculo.</p>
+ <div class="form"><label>Nome</label><input id="tagName" value="${old.name}" maxlength="30" placeholder="Ex.: Plantão noturno">
+ <label>Emoji</label><input id="tagEmoji" value="${old.emoji}" maxlength="4" placeholder="🩺">
+ <label>Cor do círculo</label><div class="color-row">${colors.map(c=>`<button type="button" class="color ${c===old.color?'active':''}" data-color="${c}" style="background:${c}" aria-label="${c}"></button>`).join('')}</div>
+ <label>Exibição no calendário</label><select id="emojiMode">
+ <option value="circle" ${(!old.displayMode && !old.emojiMode)||old.displayMode==='circle'?'selected':''}>Número + círculo colorido</option>
+ <option value="emoji" ${old.displayMode==='emoji'||(!old.displayMode&&old.emojiMode)?'selected':''}>Somente emoji</option>
+ <option value="combined" ${old.displayMode==='combined'?'selected':''}>Número + círculo + emoji</option>
+ </select>
+ <label>Categoria para o resumo</label><select id="tagKind"><option value="other">Outro</option><option value="shift" ${old.kind==='shift'?'selected':''}>Plantão programado</option><option value="done" ${old.kind==='done'?'selected':''}>Realizado</option><option value="missed" ${old.kind==='missed'?'selected':''}>Falta</option><option value="paid" ${old.kind==='paid'?'selected':''}>Folga remunerada</option></select></div>
+ <div class="actions-row"><button class="primary" id="saveTag">Salvar</button>${id?'<button class="danger" id="deleteTag">Excluir</button>':''}<button id="cancelTag">Cancelar</button></div>`;
+ let chosen=old.color;
+ document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{chosen=b.dataset.color;document.querySelectorAll('[data-color]').forEach(x=>x.classList.remove('active'));b.classList.add('active')});
+ document.getElementById('saveTag').onclick=()=>{
+   const name=document.getElementById('tagName').value.trim(), emoji=document.getElementById('tagEmoji').value.trim();
+   if(!name||!emoji){alert('Informe um nome e um emoji.');return}
+   const displayMode=document.getElementById('emojiMode').value;
+   const obj={id:id||('tag_'+Date.now()),name,emoji,color:chosen,displayMode,emojiMode:displayMode==='emoji',kind:document.getElementById('tagKind').value};
+   if(id)tags=tags.map(t=>t.id===id?obj:t);else tags.push(obj);
+   save();openTags();render();
+ };
+ document.getElementById('cancelTag').onclick=()=>id?openTags():closeModal();
+ if(id)document.getElementById('deleteTag').onclick=()=>{if(['shift','paid','done','missed'].includes(old.kind)){alert('As tags padrão não podem ser excluídas.');return}tags=tags.filter(t=>t.id!==id);Object.keys(events).forEach(d=>{if(events[d].tagId===id)delete events[d]});save();openTags();render()};
+}
+function closeModal(){document.getElementById('back').style.display='none'}
+document.getElementById('prevYear').onclick=()=>{viewYear--;render()};
+document.getElementById('nextYear').onclick=()=>{viewYear++;render()};
+document.getElementById('todayBtn')?.addEventListener('click',()=>{const n=new Date();viewYear=n.getFullYear();selected=n;viewMode='month';render()});
+document.getElementById('bottomNew').onclick=openEvent;
+document.getElementById('bottomProfile').onclick=()=>currentUser?showMenu('profile'):showLoginGate();
+document.getElementById('bottomSummary').onclick=()=>showMenu('summary');
+document.getElementById('openRoutineCalendar')?.addEventListener('click',()=>showMenu('calendar'));
+document.getElementById('tagsBtn')?.addEventListener('click',openTags);
+document.getElementById('yearView')?.addEventListener('click',()=>{viewMode='year';render()});
+document.getElementById('monthView')?.addEventListener('click',()=>{viewMode='month';selected=new Date(viewYear,selected.getMonth(),1);render()});
+document.getElementById('prevMonthArrow')?.addEventListener('click',()=>{
+  let m=selected.getMonth()-1;
+  if(m<0){viewYear--;m=11}
+  selected=new Date(viewYear,m,1);
+  render();
+});
+document.getElementById('nextMonthArrow')?.addEventListener('click',()=>{
+  let m=selected.getMonth()+1;
+  if(m>11){viewYear++;m=0}
+  selected=new Date(viewYear,m,1);
+  render();
+});
+
+let touchStartX=0, touchStartY=0, touchStarted=false;
+const calendarArea=document.getElementById('calendarArea');
+calendarArea.addEventListener('touchstart',e=>{
+  if(e.touches.length!==1)return;
+  touchStartX=e.touches[0].clientX;
+  touchStartY=e.touches[0].clientY;
+  touchStarted=true;
+},{passive:true});
+calendarArea.addEventListener('touchend',e=>{
+  if(!touchStarted)return;
+  const dx=e.changedTouches[0].clientX-touchStartX;
+  const dy=e.changedTouches[0].clientY-touchStartY;
+  touchStarted=false;
+  if(Math.abs(dx)<45 || Math.abs(dx)<Math.abs(dy)*1.15)return;
+  if(viewMode==='month'){
+    let m=selected.getMonth()+(dx<0?1:-1);
+    if(m>11){viewYear++;m=0}
+    if(m<0){viewYear--;m=11}
+    selected=new Date(viewYear,m,1);
+  }else{
+    viewYear += dx<0 ? 1 : -1;
+    selected=new Date(viewYear,selected.getMonth(),1);
+  }
+  render();
+},{passive:true});
+document.getElementById('back').onclick=e=>{if(e.target.id==='back')closeModal()};
+document.addEventListener('keydown',e=>{
+  if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+  if(e.target.matches('input,select,textarea,button'))return;
+  const dir=e.key==='ArrowLeft'?-1:1;
+  if(viewMode==='month'){
+    let m=selected.getMonth()+dir;
+    if(m<0){viewYear--;m=11} if(m>11){viewYear++;m=0}
+    selected=new Date(viewYear,m,1);
+  }else viewYear+=dir;
+  render();
+});
+showSharedData();
+applyProfile();
+if(location.hash.startsWith('#compartilhado=')){showMenu('calendar');}
+setupMenu();
+setupTitleMenu();
+updateModeUI();
+document.querySelectorAll('.title-option').forEach(b=>b.classList.toggle('active',b.dataset.section==='shifts'));
+render();
+
+function htmlEscape(v){return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;').replace(/'/g,'&#39;')}
+document.addEventListener('click',async function(e){
+  const btn=e.target.closest('#copyShareLink');
+  if(!btn)return;
+  e.preventDefault();
+  const out=document.getElementById('shareLinkOutput');
+  if(!out?.value)return;
+  try{
+    await navigator.clipboard.writeText(out.value);
+    btn.textContent='✓ Copiado';
+    setTimeout(()=>btn.textContent='Copiar link',1400);
+  }catch(err){
+    out.select();
+    document.execCommand('copy');
+    btn.textContent='✓ Copiado';
+    setTimeout(()=>btn.textContent='Copiar link',1400);
+  }
+});
+
+// CONSTANTIA 1.12: notificações locais de plantões
+const notificationPrefsKey='constantiaNotificationPrefs';
+const notificationSentKey='constantiaNotificationSent';
+let notificationTimer=null;
+function getNotificationPrefs(){try{return JSON.parse(constantiaStorage.get(notificationPrefsKey)||'null')||{enabled:true,lead:60}}catch(e){return{enabled:true,lead:60}}}
+function saveNotificationPrefs(){const enabled=document.getElementById('notificationEnabled')?.value==='true';const lead=Number(document.getElementById('notificationLead')?.value||60);constantiaStorage.set(notificationPrefsKey,JSON.stringify({enabled,lead}));checkUpcomingNotifications()}
+function notificationStatus(){const el=document.getElementById('notificationStatus');if(!el)return;if(!('Notification' in window)){el.textContent='Este navegador não oferece notificações web.';return}if(Notification.permission==='granted')el.textContent='✓ Notificações permitidas neste dispositivo.';else if(Notification.permission==='denied')el.textContent='⚠️ As notificações estão bloqueadas. Ative-as nas configurações do navegador.';else el.textContent='As notificações ainda não foram autorizadas.'}
+async function requestNotifications(){if(!('Notification' in window)){notificationStatus();return}try{await Notification.requestPermission()}catch(e){}notificationStatus();checkUpcomingNotifications()}
+function sendTestNotification(){if(!('Notification' in window)||Notification.permission!=='granted'){alert('Primeiro permita as notificações da CONSTANTIA.');return}new Notification('CONSTANTIA 🔔',{body:'As notificações estão funcionando neste dispositivo.'})}
+function notificationEventStart(date,ev){const raw=String(ev?.time||'09:00 - 21:00').replace(/[–—]/g,'-').trim();const first=raw.split(/\s*-\s*/)[0]||'09:00';const d=new Date(String(date)+'T'+first.slice(0,5)+':00');return Number.isNaN(d.getTime())?null:d}
+function checkUpcomingNotifications(){notificationStatus();const p=getNotificationPrefs(),next=document.getElementById('nextNotification'),en=document.getElementById('notificationEnabled'),lead=document.getElementById('notificationLead');if(en)en.value=String(p.enabled);if(lead)lead.value=String(p.lead);if(!p.enabled||!('Notification' in window)||Notification.permission!=='granted'){if(next)next.textContent='';return}const now=new Date(),sent=readJSON(notificationSentKey,{});let nearest=null;Object.entries(events||{}).forEach(([date,ev])=>{const start=notificationEventStart(date,ev);if(!start||start<=now)return;const notifyAt=new Date(start.getTime()-p.lead*60000);if(notifyAt>now&&(!nearest||notifyAt<nearest.when))nearest={when:notifyAt};if(notifyAt<=now&&start-now<=p.lead*60000){const key=date+'|'+start.toISOString()+'|'+p.lead;if(!sent[key]){const time=String(ev?.time||'09:00').replace(/[–—]/g,'-').split(/\s*-\s*/)[0].slice(0,5);new Notification('CONSTANTIA • Plantão próximo',{body:(ev?.note||'Seu plantão')+' começa às '+time+'.'});sent[key]=Date.now();constantiaStorage.set(notificationSentKey,JSON.stringify(sent))}}});if(next)next.textContent=nearest?'Próximo lembrete: '+nearest.when.toLocaleString('pt-BR'):'Nenhum lembrete futuro encontrado.'}
+function startNotificationWatcher(){clearInterval(notificationTimer);notificationTimer=setInterval(checkUpcomingNotifications,30000);checkUpcomingNotifications()}
+
+let deferredInstallPrompt=null;
+let installInProgress=false;
+
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredInstallPrompt=e;
+  const status=document.getElementById('installStatus');
+  if(status)status.textContent='Instalação disponível neste navegador.';
+});
+
+window.addEventListener('appinstalled',()=>{
+  deferredInstallPrompt=null;
+  const status=document.getElementById('installStatus');
+  if(status)status.textContent='✓ CONSTANTIA foi adicionada à tela inicial.';
+});
+
+async function installApp(){
+  if(installInProgress)return;
+  installInProgress=true;
+  try{
+    const status=document.getElementById('installStatus');
+    const isStandalone=window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true;
+
+    if(isStandalone){
+      if(status)status.textContent='✓ A CONSTANTIA já está instalada.';
+      return;
+    }
+
+    if(deferredInstallPrompt){
+      deferredInstallPrompt.prompt();
+      try{ await deferredInstallPrompt.userChoice; }catch(e){}
+      deferredInstallPrompt=null;
+      return;
+    }
+
+    const isAndroid=/android/i.test(navigator.userAgent);
+    if(status){
+      status.innerHTML=isAndroid
+        ? 'No Android/Chrome: toque no menu ⋮ do navegador e escolha <strong>“Instalar app”</strong> ou <strong>“Adicionar à tela inicial”</strong>.'
+        : 'Abra o menu do navegador e escolha “Adicionar à tela inicial” ou “Instalar aplicativo”.';
+    }
+  }finally{
+    installInProgress=false;
+  }
+}
+
+document.addEventListener('click',function(e){
+  const btn=e.target.closest('#installApp,#addHomeScreen,[data-install-app]');
+  if(!btn)return;
+  e.preventDefault();
+  e.stopPropagation();
+  installApp();
+});
+
+window.appDiagnostics=function(){
+  const required=['calendarContent','summaryContent','profileName','generateLink'];
+  return Object.fromEntries(required.map(id=>[id,!!document.getElementById(id)]));
+};
+
+
+// CONSTANTIA Cloud Sync 1.4
+function statusForTag(tagId){const kind=tag(tagId)?.kind;if(kind==='done')return'completed';if(kind==='missed')return'cancelled';return'planned';}
+function tagIdForShift(row){const m=row?.metadata||{};if(m.tagId)return m.tagId;if(row.status==='completed')return'done';if(row.status==='cancelled')return'missed';return'shift';}
+function timeParts(value){const raw=String(value||'').replace(/[–—]/g,'-').trim(),parts=raw.split(/\s*-\s*/);return{start:(parts[0]||'09:00').trim().slice(0,5),end:(parts[1]||'21:00').trim().slice(0,5)};}
+function shiftRowFromEvent(date,ev){const t=timeParts(ev.time);return{user_id:currentUser.id,shift_date:date,start_time:t.start+':00',end_time:t.end+':00',workplace:null,role:profile.role||null,notes:ev.note||null,status:statusForTag(ev.tagId),metadata:{tagId:ev.tagId||'shift',emoji:ev.emoji||tag(ev.tagId)?.emoji||'🩺',color:ev.color||tag(ev.tagId)?.color||'#a9bd68',filled:!!ev.filled}};}
+function eventFromShift(row){const m=row.metadata||{},tagId=tagIdForShift(row);return{tagId,emoji:m.emoji||tag(tagId)?.emoji||'🩺',color:m.color||tag(tagId)?.color||'#a9bd68',time:`${String(row.start_time||'09:00').slice(0,5)} – ${String(row.end_time||'21:00').slice(0,5)}`,note:row.notes||'',filled:!!m.filled};}
+async function loadCloudData(){
+ if(!currentUser)return;
+ const client=await ensureSupabaseClient();
+ const [{data:pr,error:pe},{data:sr,error:se}]=await Promise.all([
+  client.from('profiles').select('full_name,email,preferences,lgpd_consent_at,lgpd_consent_version').eq('id',currentUser.id).maybeSingle(),
+  client.from('shifts').select('id,shift_date,start_time,end_time,workplace,role,notes,status,metadata').eq('user_id',currentUser.id).order('shift_date',{ascending:true})
+ ]);
+ if(pe)throw pe;if(se)throw se;
+ if(pr){const p=pr.preferences||{};profile={...profile,name:pr.full_name||profile.name,username:p.username||profile.username||normalizeUsername(pr.full_name||profile.name),role:p.role||profile.role,color:p.color||profile.color,photo:p.photo||profile.photo,banner:p.banner||profile.banner};constantiaStorage.set('plantaoProfile',JSON.stringify(profile));}
+ const localEvents={...events};
+ const cloudEvents={};(sr||[]).forEach(row=>cloudEvents[String(row.shift_date)]=eventFromShift(row));
+ // Se a conta já possui dados, eles são a fonte oficial. Se ainda não possui
+ // plantões, preservamos os registros locais para que o primeiro login possa
+ // enviá-los ao Supabase em vez de apagá-los.
+ if((sr||[]).length){
+   events=cloudEvents;
+ }else if(Object.keys(localEvents).length){
+   events=localEvents;
+ }else{
+   events={};
+ }
+ constantiaStorage.set('plantaoEvents',JSON.stringify(events));
+ cloudReady=true;applyProfile();render();
+ if(!(sr||[]).length && Object.keys(events).length)queueCloudSync();
+}
+async function ensureCloudProfile(){
+ if(!currentUser)return;
+ const payload={id:currentUser.id,full_name:profile.name||currentUser.email?.split('@')[0]||'Usuário',email:currentUser.email||null,preferences:{username:profile.username||suggestedUsername(),role:profile.role||'',color:profile.color||'#76528b',photo:profile.photo||'',banner:profile.banner||''},updated_at:new Date().toISOString()};
+ const client=await ensureSupabaseClient();
+ const{error}=await client.from('profiles').upsert(payload,{onConflict:'id'});if(error)throw error;
+}
+async function syncCloud(){
+ if(!currentUser||!cloudReady||cloudSyncInFlight)return;cloudSyncInFlight=true;
+ try{
+  await ensureCloudProfile();
+  const client=await ensureSupabaseClient();
+  const{data:existing,error:re}=await client.from('shifts').select('id,shift_date').eq('user_id',currentUser.id);
+  if(re)throw re;
+  const desired=new Set(Object.keys(events));
+  const removeIds=(existing||[]).filter(r=>!desired.has(String(r.shift_date))).map(r=>r.id);
+  if(removeIds.length){const{error}=await client.from('shifts').delete().in('id',removeIds);if(error)throw error;}
+  const rows=Object.entries(events).map(([date,ev])=>shiftRowFromEvent(date,ev));
+  if(rows.length){const{error}=await client.from('shifts').upsert(rows,{onConflict:'user_id,shift_date'});if(error)throw error;}
+  authMsg('✓ Dados sincronizados com o Supabase.');
+ }catch(error){
+  console.error('CONSTANTIA cloud sync:',error);
+  authMsg('⚠️ Não foi possível sincronizar com o Supabase: '+(error?.message||'erro desconhecido'));
+ }finally{cloudSyncInFlight=false;}
+}
+function queueCloudSync(){if(!currentUser)return;clearTimeout(cloudSyncTimer);cloudSyncTimer=setTimeout(syncCloud,350);}
+async function handleAuthenticatedUser(user){
+ currentUser=user||null;cloudReady=false;
+ if(!currentUser)return;
+ if(authHandlingPromise && authHandlingUserId===currentUser.id)return authHandlingPromise;
+ authHandlingUserId=currentUser.id;
+ authHandlingPromise=(async()=>{
+   try{await loadCloudData();if(!profile.name)await ensureCloudProfile();}
+   catch(error){console.error('CONSTANTIA cloud load:',error);authMsg('Conta conectada, mas não foi possível carregar os dados: '+(error?.message||'erro desconhecido'));}
+   finally{authHandlingPromise=null;authHandlingUserId=null;}
+ })();
+ return authHandlingPromise;
+}
+// CONSTANTIA Auth 2.1 - uses the client created by the bootstrap above.
+var SUPABASE_URL="https://sseysfdqittgzoczlgog.supabase.co";
+var SUPABASE_PUBLISHABLE_KEY="sb_publishable_mhN8HL9ck9LR5bhCURX7Rg_607Smq8I";
+var constantiaSupabaseClient=window.constantiaSupabaseClient||null;
+
+function createConstantiaSupabaseClient(){
+  if(constantiaSupabaseClient && constantiaSupabaseClient.auth) return constantiaSupabaseClient;
+  if(window.constantiaSupabaseClient && window.constantiaSupabaseClient.auth){
+    constantiaSupabaseClient=window.constantiaSupabaseClient;
+    return constantiaSupabaseClient;
+  }
+  if(window.supabase && typeof window.supabase.createClient==='function'){
+    var client=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+    if(client && client.auth){
+      constantiaSupabaseClient=client;
+      window.constantiaSupabaseClient=client;
+      window.CONSTANTIA_SUPABASE_READY=true;
+      return client;
+    }
+  }
+  throw new Error(window.CONSTANTIA_SUPABASE_ERROR||'O serviço de autenticação do Supabase não foi inicializado.');
+}
+
+function ensureSupabaseClient(){
+  try{return Promise.resolve(createConstantiaSupabaseClient());}
+  catch(error){return Promise.reject(error);}
+}
+
+function authMsg(t){
+  const gate=document.getElementById('gateStatus');
+  const modal=document.getElementById('authMessage');
+  if(gate)gate.textContent=t;
+  if(modal)modal.textContent=t;
+}
+function showAuth(){showLoginGate();}
+function closeAuth(){hideLoginGate();}
+function authGateMsg(t){const el=document.getElementById('gateStatus');if(el)el.textContent=t;}
+function showLoginGate(){
+ const g=document.getElementById('authGate'); if(g)g.style.display='flex';
+ const login=document.getElementById('loginForm'),reset=document.getElementById('resetForm'),newPass=document.getElementById('newPasswordForm');
+ if(login)login.style.display='grid'; if(reset)reset.style.display='none'; if(newPass)newPass.style.display='none';
+}
+function showForgotForm(){
+ const login=document.getElementById('loginForm'),reset=document.getElementById('resetForm'),newPass=document.getElementById('newPasswordForm');
+ if(login)login.style.display='none'; if(reset)reset.style.display='grid'; if(newPass)newPass.style.display='none';
+ const re=document.getElementById('resetEmail'),ge=document.getElementById('gateEmail'); if(re)re.value=ge?.value.trim()||'';
+ authGateMsg('');
+}
+function showNewPasswordForm(){
+ const login=document.getElementById('loginForm'),reset=document.getElementById('resetForm'),newPass=document.getElementById('newPasswordForm');
+ if(login)login.style.display='none'; if(reset)reset.style.display='none'; if(newPass)newPass.style.display='grid';
+ authGateMsg('Escolha uma nova senha para sua conta.');
+ const g=document.getElementById('authGate'); if(g)g.style.display='flex';
+}
+function hideLoginGate(){const g=document.getElementById('authGate');if(g)g.style.display='none';}
+function cleanAuthError(error){const m=String(error?.message||'');if(/already registered|user already registered/i.test(m))return'Este e-mail já está cadastrado. Tente entrar.';if(/password.*(6|short|characters)/i.test(m))return'A senha precisa ter pelo menos 6 caracteres.';if(/invalid.*email/i.test(m))return'Informe um e-mail válido.';if(/email.*not confirmed/i.test(m))return'Confirme seu e-mail antes de entrar.';return m||'Não foi possível concluir a operação. Tente novamente.';}
+async function gateSignIn(){
+ const email=document.getElementById('gateEmail')?.value.trim().toLowerCase()||'';
+ const password=document.getElementById('gatePassword')?.value||'';
+ if(!email||!password){authGateMsg('Informe e-mail e senha.');return;}
+ authGateMsg('Entrando...');
+ try{
+   const client=await ensureSupabaseClient();
+   const{data,error}=await client.auth.signInWithPassword({email,password});
+   if(error){authGateMsg(cleanAuthError(error));return;}
+   if(!data?.user){authGateMsg('Não foi possível iniciar a sessão. Tente novamente.');return;}
+   currentUser=data.user;
+   await handleAuthenticatedUser(data.user);
+   authGateMsg('Login realizado.');
+   setTimeout(hideLoginGate,350);
+ }catch(err){
+   console.error('CONSTANTIA login:',err);
+   authGateMsg(cleanAuthError(err));
+ }
+}
+async function gateSignUp(){
+ const email=document.getElementById('gateEmail')?.value.trim().toLowerCase()||'';
+ const password=document.getElementById('gatePassword')?.value||'';
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){authGateMsg('Informe um e-mail válido.');return;}
+ if(password.length<6){authGateMsg('A senha precisa ter pelo menos 6 caracteres.');return;}
+ authGateMsg('Criando sua conta...');
+ try{
+   const client=await ensureSupabaseClient();
+   const redirectTo=location.protocol==='https:'||location.hostname==='localhost'?new URL('./',location.href).href:undefined;
+   const{data,error}=await client.auth.signUp({email,password,options:redirectTo?{emailRedirectTo:redirectTo}:undefined});
+   if(error){authGateMsg(cleanAuthError(error));return;}
+   if(data?.session&&data?.user){
+     currentUser=data.user;
+     await handleAuthenticatedUser(data.user);
+     authGateMsg('Conta criada.');
+     setTimeout(hideLoginGate,500);
+     return;
+   }
+   authGateMsg('Conta criada. Verifique seu e-mail para confirmar o cadastro.');
+ }catch(err){
+   console.error('CONSTANTIA signup:',err);
+   authGateMsg(cleanAuthError(err));
+ }
+}
+async function sendPasswordReset(){const email=document.getElementById('resetEmail').value.trim().toLowerCase();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){authGateMsg('Informe um e-mail válido.');return;}const redirectTo=location.protocol==='file:'?undefined:location.href.split('#')[0];authGateMsg('Enviando link de recuperação...');try{const client=await ensureSupabaseClient();const{error}=await client.auth.resetPasswordForEmail(email,redirectTo?{redirectTo}:undefined);if(error){authGateMsg(cleanAuthError(error));return;}authGateMsg('Link enviado. Verifique seu e-mail e abra o link para criar uma nova senha.');}catch(err){authGateMsg(cleanAuthError(err));}}
+async function saveNewPassword(){const a=document.getElementById('newPassword').value,b=document.getElementById('newPassword2').value;if(a.length<6){authGateMsg('A nova senha precisa ter pelo menos 6 caracteres.');return;}if(a!==b){authGateMsg('As senhas não coincidem.');return;}authGateMsg('Salvando nova senha...');try{const client=await ensureSupabaseClient();const{error}=await client.auth.updateUser({password:a});if(error){authGateMsg(cleanAuthError(error));return;}authGateMsg('Senha alterada com sucesso. Você já pode usar a CONSTANTIA.');passwordRecoveryActive=false;try{history.replaceState({},document.title,location.pathname+location.search);}catch(e){}setTimeout(hideLoginGate,900);}catch(err){authGateMsg(cleanAuthError(err));}}
+async function updateAuthUI(){const b=document.getElementById('authButton');if(!b)return;try{const client=await ensureSupabaseClient();const{data}=await client.auth.getUser();b.textContent=data?.user?'🔓 Conta':'🔐 Entrar / conta';b.title=data?.user?('Conectado: '+data.user.email):'Entrar ou criar conta';}catch(err){b.textContent='🔐 Entrar / conta';b.title='Entrar ou criar conta';}}
+function bindAuthControls(){
+ const bind=(id,event,fn)=>{
+   const el=document.getElementById(id);
+   if(el&&!el.dataset.constantiaBound){el.addEventListener(event,fn);el.dataset.constantiaBound='1';}
+ };
+ bind('gateLogin','click',gateSignIn);
+ bind('gateSignup','click',gateSignUp);
+ const email=document.getElementById('gateEmail'),pass=document.getElementById('gatePassword');
+ if(email&&!email.dataset.constantiaBound){email.addEventListener('keydown',e=>{if(e.key==='Enter')pass?.focus()});email.dataset.constantiaBound='1';}
+ if(pass&&!pass.dataset.constantiaBound){pass.addEventListener('keydown',e=>{if(e.key==='Enter')gateSignIn()});pass.dataset.constantiaBound='1';}
+ bind('forgotPassword','click',showForgotForm);
+ bind('backToLogin','click',showLoginGate);
+ bind('sendReset','click',sendPasswordReset);
+ bind('saveNewPassword','click',saveNewPassword);
+ bind('enableNotifications','click',requestNotifications);
+ bind('testNotification','click',sendTestNotification);
+ bind('notificationLead','change',saveNotificationPrefs);
+ bind('notificationEnabled','change',saveNotificationPrefs);
+ bind('logoutButton','click',async()=>{try{const client=await ensureSupabaseClient();await client.auth.signOut();}finally{showLoginGate();}});
+ const back=document.getElementById('authBack');
+ if(back&&!back.dataset.constantiaBound){back.addEventListener('click',e=>{if(e.target.id==='authBack')closeAuth()});back.dataset.constantiaBound='1';}
+}
+window.addEventListener('DOMContentLoaded',async()=>{
+ bindAuthControls();
+ try{await ensureSupabaseClient();}catch(err){console.error('CONSTANTIA Supabase:',err);showLoginGate();authGateMsg('Não foi possível carregar o serviço de login. Verifique sua conexão com a internet e tente novamente.');return;}
+ showLoginGate();
+ let publicShareLoaded=false;
+ try{publicShareLoaded=await loadPublicShareFromPath();}catch(err){console.error('CONSTANTIA share init:',err);}
+ if(publicShareLoaded){
+   applyProfile();render();activatePublicShareMode();startPublicShareRefresh();
+   document.getElementById('authGate')?.style.setProperty('display','none');
+   return;
+ }
+ startNotificationWatcher();
+ const client=await ensureSupabaseClient();
+ client.auth.onAuthStateChange(async(event,session)=>{
+   currentUser=session?.user||null;updateAuthUI();
+   if(event==='PASSWORD_RECOVERY'){passwordRecoveryActive=true;showNewPasswordForm();return;}
+   if(window.constantiaPublicShare)return;
+   if(currentUser){
+     try{await handleAuthenticatedUser(currentUser);if(!passwordRecoveryActive)hideLoginGate();}
+     catch(err){console.error('CONSTANTIA auth state:',err);authGateMsg(cleanAuthError(err));}
+   }else{
+     passwordRecoveryActive=false;cloudReady=false;authHandlingPromise=null;authHandlingUserId=null;showLoginGate();
+   }
+ });
+ updateAuthUI();
+ const recoveryHash=location.hash||'',recoveryQuery=location.search||'';
+ if(/access_token=.*type=recovery|type=recovery.*access_token=/i.test(recoveryHash)||/[?&]type=recovery(?:&|$)/i.test(recoveryQuery)){passwordRecoveryActive=true;showNewPasswordForm();}
+ try{
+   const initialSession=await client.auth.getSession();
+   if(initialSession?.data?.session?.user){
+     currentUser=initialSession.data.session.user;
+     await handleAuthenticatedUser(currentUser);
+     if(!passwordRecoveryActive)hideLoginGate();
+   }else if(!passwordRecoveryActive)showLoginGate();
+ }catch(err){
+   console.error('CONSTANTIA auth initialization:',err);
+   currentUser=null;
+   if(!passwordRecoveryActive){showLoginGate();authGateMsg('Não foi possível verificar a sessão. Você pode tentar entrar novamente.');}
+ }
+});;
+</script>
+
+<div id="authBack" class="modal-back" style="z-index:100;display:none"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle"><h3 id="authTitle">Conta CONSTANTIA</h3><p id="authMessage">Gerencie o acesso à sua conta.</p><div class="actions-row"><button id="authClose" type="button">Fechar</button></div></div></div>
+<script>
+if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){
+ window.addEventListener('load',async()=>{
+   try{
+     await navigator.serviceWorker.register('./sw.js',{scope:'./'});
+   }catch(err){
+     console.warn('CONSTANTIA service worker:',err);
+   }
+ });
+}
+</script>
+
+</body>
+</html>
